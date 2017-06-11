@@ -1,5 +1,3 @@
-group = "butta"
-name = "cms-boot"
 version = '0.0.1-SNAPSHOT'
 
 buildscript {
