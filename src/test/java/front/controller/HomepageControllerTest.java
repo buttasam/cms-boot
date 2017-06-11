@@ -13,4 +13,9 @@ public class HomepageControllerTest {
         Assert.assertTrue(true);
     }
 
+    @Test
+    public void test2() {
+        Assert.assertTrue(true);
+    }
+
 }
