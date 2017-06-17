@@ -1,4 +1,4 @@
-package front.controller;
+package app.front.controller;
 
 import org.junit.Assert;
 import org.junit.Test;

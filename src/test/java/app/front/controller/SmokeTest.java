@@ -1,4 +1,4 @@
-package front.controller;
+package app.front.controller;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

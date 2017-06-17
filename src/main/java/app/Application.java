@@ -1,4 +1,4 @@
-package front; /**
+package app; /**
  * @author Samuel Butta
  */
 import org.springframework.boot.SpringApplication;
