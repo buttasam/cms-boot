@@ -24,11 +24,23 @@ repositories {
 }
 
 dependencies {
+    // compile dependencies
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
     compile('org.springframework.boot:spring-boot-starter-web')
-    runtime('com.h2database:h2')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools")
+
+    // test compile dependencies
+    testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile("junit:junit")
+
+    // runtime dependencies
+    runtime('com.h2database:h2')
+
+    // webjars dependencies
+    compile 'org.webjars:bootstrap:3.3.7-1'
+    compile 'org.webjars:font-awesome:4.7.0'
+    compile 'org.webjars:nprogress:0.1.2'
+    compile 'org.webjars:animate.css:3.5.2'
 }
