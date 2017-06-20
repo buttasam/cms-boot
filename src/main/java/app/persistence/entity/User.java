@@ -1,8 +1,5 @@
 package app.persistence.entity;
 
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -14,24 +11,27 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
+    @Column
     private Long id;
 
     @Column
     private String email;
 
-    @Column(name = "password")
+    @Column
     private String password;
 
     @Column
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column
     private String lastName;
 
-    @Column(name = "active")
+    @Column
     private boolean active;
 
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Role> roles;
 
     public Long getId() {
         return id;
@@ -81,4 +81,11 @@ public class User {
         this.active = active;
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 }

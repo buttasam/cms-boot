@@ -30,6 +30,7 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools")
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.42'
 
     // test compile dependencies
     testCompile('org.springframework.boot:spring-boot-starter-test')
