@@ -44,4 +44,16 @@ dependencies {
     compile 'org.webjars:font-awesome:4.7.0'
     compile 'org.webjars:nprogress:0.1.2'
     compile 'org.webjars:animate.css:3.5.2'
+    compile 'org.webjars.bower:iCheck:1.0.2'
+    compile 'org.webjars.bower:bootstrap-progressbar:0.9.0'
+    compile 'org.webjars.npm:github-com-manifestinteractive-jqvmap:1.5.1'
+    compile 'org.webjars.bower:bootstrap-daterangepicker:2.1.25'
+    compile 'org.webjars:fastclick:1.0.6'
+    compile 'org.webjars.bower:chart.js:2.5.0'
+    compile 'org.webjars.bower:gauge.js:1.3.2'
+    compile 'org.webjars.bower:flot:0.8.3'
+    compile 'org.webjars.bower:datejs:1.0.0-rc3'
+    compile 'org.webjars.npm:github-com-manifestinteractive-jqvmap:1.5.1'
+    compile 'org.webjars.bower:moment:2.18.1'
+
 }
