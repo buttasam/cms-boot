@@ -1,10 +1,12 @@
 package app.admin.controller;
 
+import app.persistence.entity.User;
 import app.persistence.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @author Samuel Butta
@@ -24,6 +26,21 @@ public class UserController {
         model.addAttribute("users", userRepository.findAll());
 
         return "/admin/all";
+    }
+
+    @RequestMapping("/delete")
+    public String deleteUser(@RequestParam Long userId) {
+        System.out.println(userId);
+
+        // delete user
+        User user = userRepository.getOne(userId);
+
+        if(user != null) {
+            user.setActive(false);
+            userRepository.save(user);
+        }
+
+        return "redirect:/admin/users/all";
     }
 
 }
