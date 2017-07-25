@@ -1,9 +1,7 @@
 package app.persistence.repository;
 
-import app.persistence.entity.ProductCategory;
-import app.persistence.entity.Role;
-import app.persistence.entity.RoleType;
-import app.persistence.entity.User;
+import app.persistence.entity.eshop.ProductCategory;
+import app.persistence.repository.eshop.ProductCategoryRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,9 +10,6 @@ import org.springframework.boot.autoconfigure.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * @author Samuel Butta

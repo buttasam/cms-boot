@@ -1,7 +1,7 @@
 package app.admin.controller;
 
-import app.persistence.entity.User;
-import app.persistence.repository.UserRepository;
+import app.persistence.entity.auth.User;
+import app.persistence.repository.auth.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

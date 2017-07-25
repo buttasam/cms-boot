@@ -1,6 +1,6 @@
-package app.persistence.repository;
+package app.persistence.repository.auth;
 
-import app.persistence.entity.User;
+import app.persistence.entity.auth.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

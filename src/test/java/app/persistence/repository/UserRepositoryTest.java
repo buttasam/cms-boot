@@ -1,8 +1,9 @@
 package app.persistence.repository;
 
-import app.persistence.entity.Role;
-import app.persistence.entity.RoleType;
-import app.persistence.entity.User;
+import app.persistence.entity.auth.Role;
+import app.persistence.entity.auth.RoleType;
+import app.persistence.entity.auth.User;
+import app.persistence.repository.auth.UserRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,7 +13,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.jws.soap.SOAPBinding;
 import java.util.HashSet;
 import java.util.Set;
 

@@ -1,6 +1,6 @@
-package app.persistence.repository;
+package app.persistence.repository.eshop;
 
-import app.persistence.entity.ProductCategory;
+import app.persistence.entity.eshop.ProductCategory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package app.persistence.entity;
+package app.persistence.entity.auth;
 
 /**
  * Prehled uzivatelskych roli v cele aplikaci.

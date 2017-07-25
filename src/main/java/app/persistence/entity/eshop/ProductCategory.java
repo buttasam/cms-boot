@@ -1,4 +1,4 @@
-package app.persistence.entity;
+package app.persistence.entity.eshop;
 
 import javax.persistence.*;
 
@@ -17,7 +17,6 @@ public class ProductCategory {
 
     @OneToOne
     private ProductCategory parentCategory;
-
 
     public Long getId() {
         return id;
