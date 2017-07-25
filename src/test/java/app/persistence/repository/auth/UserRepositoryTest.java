@@ -1,4 +1,4 @@
-package app.persistence.repository;
+package app.persistence.repository.auth;
 
 import app.persistence.entity.auth.Role;
 import app.persistence.entity.auth.RoleType;

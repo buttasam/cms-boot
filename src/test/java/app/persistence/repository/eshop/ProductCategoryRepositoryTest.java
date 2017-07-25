@@ -1,7 +1,6 @@
-package app.persistence.repository;
+package app.persistence.repository.eshop;
 
 import app.persistence.entity.eshop.ProductCategory;
-import app.persistence.repository.eshop.ProductCategoryRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
