@@ -18,19 +18,15 @@
         <div class="right_col" role="main">
 
             <div class="row">
-
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Table design
-                                <small>Custom design</small>
+                            <h2>Přidat stránku
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                 </li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                                       aria-expanded="false"><i class="fa fa-wrench"></i></a>
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="#">Settings 1</a>
                                         </li>
@@ -43,52 +39,46 @@
                             </ul>
                             <div class="clearfix"></div>
                         </div>
-
                         <div class="x_content">
+                            <br/>
+                            <form th:action="@{/admin/addPage}" th:object="${pageForm}" method="post" id="demo-form2"
+                                  data-parsley-validate="" class="form-horizontal form-label-left"
+                                  novalidate="">
 
-                            <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Název
+                                        stránky
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input th:field="*{title}" type="text" required="required"
+                                               class="form-control col-md-7 col-xs-12"/>
+                                        <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Url stránky
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" th:field="*{url}" name="last-name" required="required"
+                                               class="form-control col-md-7 col-xs-12"/>
+                                        <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></span>
+                                    </div>
+                                </div>
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                        <button type="submit" class="btn btn-success">Uložit</button>
+                                    </div>
+                                </div>
 
-                            <div class="table-responsive">
-                                <table class="table table-striped jambo_table bulk_action">
-                                    <thead>
-                                    <tr class="headings">
-                                        <th class="column-title">Invoice</th>
-                                        <th class="column-title">Invoice Date</th>
-                                        <th class="column-title">Order</th>
-                                        <th class="column-title">Bill to Name</th>
-                                        <th class="column-title">Status</th>
-                                        <th class="column-title">Amount</th>
-                                        <th class="column-title no-link last"><span class="nobr">Smazat</span>
-                                        </th>
-                                        <th class="bulk-actions" colspan="7">
-                                            <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span
-                                                    class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                                        </th>
-                                    </tr>
-                                    </thead>
-
-                                    <tbody>
-                                    <tr class="even pointer" th:each="user : ${users}">
-                                        <td class=" " th:text="${user.email}"></td>
-                                        <td class=" ">May 23, 2014 11:47:56 PM</td>
-                                        <td class=" ">121000210 <i class="success fa fa-long-arrow-up"></i></td>
-                                        <td class=" ">John Blank L</td>
-                                        <td class=" ">Kunda</td>
-                                        <td th:text="${user.active}"></td>
-                                        <td class=" last"><a
-                                                th:href="@{/admin/users/delete(userId=${user.id})}">Smazat</a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-
+                            </form>
                         </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
         <!-- /page content -->
     </div>

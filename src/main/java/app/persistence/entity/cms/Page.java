@@ -15,6 +15,9 @@ public class Page {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column
+    private String title;
+
     @Column(unique = true)
     private String url;
 
@@ -39,6 +42,14 @@ public class Page {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public List<PageText> getPageTexts() {
