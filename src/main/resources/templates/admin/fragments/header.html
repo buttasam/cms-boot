@@ -59,7 +59,7 @@
                                     <li th:each="page : ${pages}">
                                         <a th:href="@{/admin/page/} + ${page.url}" th:text="${page.title}"></a>
                                     </li>
-                                    <li><a th:href="@{addPage}">Přidat stránku</a></li>
+                                    <li><a th:href="@{/admin/addPage}">Přidat stránku</a></li>
                                 </ul>
                             </li>
                         </ul>

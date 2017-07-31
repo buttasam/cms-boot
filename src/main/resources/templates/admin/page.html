@@ -21,22 +21,15 @@
                 <h3 th:text="${page.title}"></h3>
             </div>
 
+            <!-- add new pagetext -->
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Přidat stránku
+                            <h2>Přidat nový obsah
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-                                <li class="dropdown">
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Settings 1</a>
-                                        </li>
-                                        <li><a href="#">Settings 2</a>
-                                        </li>
-                                    </ul>
                                 </li>
                                 <li><a class="close-link"><i class="fa fa-close"></i></a>
                                 </li>
@@ -45,29 +38,27 @@
                         </div>
                         <div class="x_content">
                             <br/>
-<!--                            <form th:action="@{/admin/addPage}" th:object="${pageForm}" method="post" id="demo-form2"
+                            <form action="#" method="post" id="demo-form2"
                                   data-parsley-validate="" class="form-horizontal form-label-left"
                                   novalidate="">
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Název
-                                        stránky
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Unikátní identifikátor
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input th:field="*{title}" type="text" required="required"
+                                        <input type="text" required="required"
                                                class="form-control col-md-7 col-xs-12"/>
-                                        <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Url stránky
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Obsah
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" th:field="*{url}" name="last-name" required="required"
+                                        <textarea required="required"
                                                class="form-control col-md-7 col-xs-12"/>
-                                        <span th:if="${#fields.hasErrors('url')}" th:errors="*{url}"></span>
                                     </div>
                                 </div>
                                 <div class="ln_solid"></div>
@@ -77,11 +68,56 @@
                                     </div>
                                 </div>
 
-                            </form>-->
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- /add new pagetext -->
+
+            <!-- edit pagetexts-->
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Identifikátor: TODO
+                            </h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <br/>
+                            <form action="#" method="post" id="demo-form2"
+                                  data-parsley-validate="" class="form-horizontal form-label-left"
+                                  novalidate="">
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Obsah
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <textarea required="required"
+                                               class="form-control col-md-7 col-xs-12"/>
+                                    </div>
+                                </div>
+                                <div class="ln_solid"></div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                        <button type="submit" class="btn btn-success">Uložit</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /edit pagetexts-->
 
         </div>
         <!-- /page content -->
