@@ -1,6 +1,7 @@
 package app.admin.controller;
 
 import app.admin.form.PageForm;
+import app.admin.form.PageTextForm;
 import app.persistence.entity.cms.Page;
 import app.persistence.repository.cms.PageRepository;
 import app.service.cms.PageService;
@@ -54,6 +55,14 @@ public class PageController {
         return "redirect:/admin/addPage";
     }
 
+    @PostMapping("/page")
+    public String pageTextForm(@Valid PageTextForm pageTextForm, BindingResult bindingResult) {
+
+        pageService.savePageText(pageTextForm);
+
+        return "redirect:/admin/addPage";
+    }
+
 
     @RequestMapping(value = "/page/{url}")
     public String renderPage(@PathVariable("url") String url, Model model) {
@@ -61,7 +70,11 @@ public class PageController {
         // TODO osetrit pokud neexistuje
         Page page = pageRepository.findByUrl(url);
 
+        PageTextForm pageTextForm = new PageTextForm();
+        pageTextForm.setPageId(page.getId());
+
         model.addAttribute("page", page);
+        model.addAttribute("pageTextForm", pageTextForm);
 
         return "admin/page";
     }

@@ -38,9 +38,7 @@
                         </div>
                         <div class="x_content">
                             <br/>
-                            <form action="#" method="post" id="demo-form2"
-                                  data-parsley-validate="" class="form-horizontal form-label-left"
-                                  novalidate="">
+                            <form th:action="@{/admin/page}" th:object="${pageTextForm}" method="post" class="form-horizontal form-label-left">
 
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
@@ -48,7 +46,7 @@
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" required="required"
+                                        <input th:field="*{identity}" ype="text" required="required"
                                                class="form-control col-md-7 col-xs-12"/>
                                     </div>
                                 </div>
@@ -57,17 +55,19 @@
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <textarea required="required"
+                                        <textarea th:field="*{content}" required="required"
                                                class="form-control col-md-7 col-xs-12"/>
                                     </div>
                                 </div>
                                 <div class="ln_solid"></div>
+
+                                <input type="hidden" th:field="*{pageId}"/>
+
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                        <button type="submit" class="btn btn-success">Uložit</button>
+                                        <input type="submit" class="btn btn-success" value="Uložit"/>
                                     </div>
                                 </div>
-
                             </form>
                         </div>
                     </div>
@@ -76,11 +76,11 @@
             <!-- /add new pagetext -->
 
             <!-- edit pagetexts-->
-            <div class="row">
+            <div class="row" th:each="pageText : ${page.pageTexts}">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Identifikátor: TODO
+                            <h2>Identifikátor: <span th:text="${pageText.identity}"></span>
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>

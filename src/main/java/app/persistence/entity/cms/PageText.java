@@ -16,6 +16,9 @@ public class PageText {
     @Column
     private String content;
 
+    @Column(unique = true)
+    private String identity;
+
     @ManyToOne
     private Page page;
 
@@ -41,5 +44,13 @@ public class PageText {
 
     public void setPage(Page page) {
         this.page = page;
+    }
+
+    public String getIdentity() {
+        return identity;
+    }
+
+    public void setIdentity(String identity) {
+        this.identity = identity;
     }
 }
