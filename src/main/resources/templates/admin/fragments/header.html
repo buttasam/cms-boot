@@ -57,7 +57,7 @@
                             <li><a><i class="fa fa-edit"></i> Obsah stránek <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li th:each="page : ${pages}">
-                                        <a href="#" th:text="${page.title}"></a>
+                                        <a th:href="@{/admin/page/} + ${page.url}" th:text="${page.title}"></a>
                                     </li>
                                     <li><a th:href="@{addPage}">Přidat stránku</a></li>
                                 </ul>
