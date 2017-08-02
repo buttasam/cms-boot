@@ -2,6 +2,7 @@ package app.admin.controller;
 
 import app.admin.form.PageForm;
 import app.admin.form.PageTextForm;
+import app.admin.form.PageTextFormsWrapper;
 import app.persistence.entity.cms.Page;
 import app.persistence.repository.cms.PageRepository;
 import app.service.cms.PageService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -82,7 +84,7 @@ public class PageController {
 
         model.addAttribute("page", page);
         model.addAttribute("pageTextForm", pageTextForm);
-        model.addAttribute("pageTextEditForms", pageTextEditForms);
+        model.addAttribute("wrapper", new PageTextFormsWrapper(pageTextEditForms));
 
         return "admin/page";
     }

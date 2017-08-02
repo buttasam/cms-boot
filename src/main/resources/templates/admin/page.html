@@ -76,11 +76,11 @@
             <!-- /add new pagetext -->
 
             <!-- edit pagetexts-->
-            <div class="row" th:each="pageTextEditForm : ${pageTextEditForms}">
+            <div class="row" th:each="pageTextEditForm, stat : ${wrapper.pageTextEditForms}">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Identifikátor: <span th:text="${pageTextEditForm.identity}"></span>
+                            <h2>Identifikátor: <span th:text="${wrapper.pageTextEditForms[__${stat.index}__].identity}"></span>
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -92,7 +92,7 @@
                         </div>
                         <div class="x_content">
                             <br/>
-                            <form th:action="@{/admin/page}" th:object="${pageTextEditForm}" method="post" id="demo-form2"
+                            <form th:action="@{/admin/page}" th:object="${wrapper.pageTextEditForms[__${stat.index}__]}" method="post" id="demo-form2"
                                   data-parsley-validate="" class="form-horizontal form-label-left"
                                   novalidate="">
 
@@ -101,7 +101,7 @@
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <textarea required="required"
+                                        <textarea th:field="*{content}" required="required"
                                                class="form-control col-md-7 col-xs-12"/>
                                     </div>
                                 </div>
