@@ -12,6 +12,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Samuel Butta
@@ -73,8 +75,14 @@ public class PageController {
         PageTextForm pageTextForm = new PageTextForm();
         pageTextForm.setPageId(page.getId());
 
+        List<PageTextForm> pageTextEditForms = page.getPageTexts()
+                .stream()
+                .map(p -> new PageTextForm(p.getIdentity(), p.getContent(), p.getPage().getId()))
+                .collect(Collectors.toList());
+
         model.addAttribute("page", page);
         model.addAttribute("pageTextForm", pageTextForm);
+        model.addAttribute("pageTextEditForms", pageTextEditForms);
 
         return "admin/page";
     }

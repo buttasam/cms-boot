@@ -11,6 +11,15 @@ public class PageTextForm {
 
     private Long pageId;
 
+    public PageTextForm() {
+    }
+
+    public PageTextForm(String identity, String content, Long pageId) {
+        this.identity = identity;
+        this.content = content;
+        this.pageId = pageId;
+    }
+
     public String getIdentity() {
         return identity;
     }

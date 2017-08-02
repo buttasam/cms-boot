@@ -76,11 +76,11 @@
             <!-- /add new pagetext -->
 
             <!-- edit pagetexts-->
-            <div class="row" th:each="pageText : ${page.pageTexts}">
+            <div class="row" th:each="pageTextEditForm : ${pageTextEditForms}">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <h2>Identifikátor: <span th:text="${pageText.identity}"></span>
+                            <h2>Identifikátor: <span th:text="${pageTextEditForm.identity}"></span>
                             </h2>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -92,7 +92,7 @@
                         </div>
                         <div class="x_content">
                             <br/>
-                            <form action="#" method="post" id="demo-form2"
+                            <form th:action="@{/admin/page}" th:object="${pageTextEditForm}" method="post" id="demo-form2"
                                   data-parsley-validate="" class="form-horizontal form-label-left"
                                   novalidate="">
 
