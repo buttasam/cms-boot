@@ -75,10 +75,7 @@ public class PageController {
 
     @PostMapping("/page/editPageText")
     public String pageTextEditForm(@RequestParam String content,@RequestParam String identity,@RequestParam Long pageId) {
-        PageText pageText = pageTextRepository.findByIdentity(identity);
-        pageText.setContent(content);
-        pageTextRepository.save(pageText);
-
+        pageService.updatePageText(identity, content);
         Page page = pageRepository.findOne(pageId);
 
         return "redirect:/admin/page/" + page.getUrl();

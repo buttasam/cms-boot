@@ -49,4 +49,12 @@ public class PageService {
 
         pageTextRepository.save(pageText);
     }
+
+    // FIXME osetreni
+    public void updatePageText(String identity, String content) {
+        PageText pageText = pageTextRepository.findByIdentity(identity);
+        pageText.setContent(content);
+
+        pageTextRepository.save(pageText);
+    }
 }
