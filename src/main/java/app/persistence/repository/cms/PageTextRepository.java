@@ -9,4 +9,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface PageTextRepository extends JpaRepository<PageText, Long> {
+
+    public PageText findByIdentity(String identity);
+
 }

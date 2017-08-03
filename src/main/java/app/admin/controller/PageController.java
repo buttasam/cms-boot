@@ -4,14 +4,18 @@ import app.admin.form.PageForm;
 import app.admin.form.PageTextForm;
 import app.admin.form.PageTextFormsWrapper;
 import app.persistence.entity.cms.Page;
+import app.persistence.entity.cms.PageText;
 import app.persistence.repository.cms.PageRepository;
+import app.persistence.repository.cms.PageTextRepository;
 import app.service.cms.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Set;
@@ -35,11 +39,13 @@ public class PageController {
      * Repositories
      */
     private PageRepository pageRepository;
+    private PageTextRepository pageTextRepository;
 
     @Autowired
-    public PageController(PageService pageService, PageRepository pageRepository) {
+    public PageController(PageService pageService, PageRepository pageRepository, PageTextRepository pageTextRepository) {
         this.pageService = pageService;
         this.pageRepository = pageRepository;
+        this.pageTextRepository = pageTextRepository;
     }
 
 
@@ -60,11 +66,22 @@ public class PageController {
     }
 
     @PostMapping("/page")
-    public String pageTextForm(@Valid PageTextForm pageTextForm, BindingResult bindingResult) {
+    public String pageTextForm(@Valid PageTextForm pageTextForm, BindingResult bindingResult, HttpServletRequest httpRequest) {
 
         pageService.savePageText(pageTextForm);
 
         return "redirect:/admin/addPage";
+    }
+
+    @PostMapping("/page/editPageText")
+    public String pageTextEditForm(@RequestParam String content,@RequestParam String identity,@RequestParam Long pageId) {
+        PageText pageText = pageTextRepository.findByIdentity(identity);
+        pageText.setContent(content);
+        pageTextRepository.save(pageText);
+
+        Page page = pageRepository.findOne(pageId);
+
+        return "redirect:/admin/page/" + page.getUrl();
     }
 
 
@@ -84,7 +101,6 @@ public class PageController {
 
         model.addAttribute("page", page);
         model.addAttribute("pageTextForm", pageTextForm);
-        model.addAttribute("wrapper", new PageTextFormsWrapper(pageTextEditForms));
 
         return "admin/page";
     }
