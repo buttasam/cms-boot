@@ -10,6 +10,8 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
+
+    compileJava.dependsOn(processResources)
 }
 
 apply plugin: 'java'
@@ -56,4 +58,6 @@ dependencies {
     compile 'org.webjars.npm:github-com-manifestinteractive-jqvmap:1.5.1'
     compile 'org.webjars.bower:moment:2.18.1'
 
+    //meta-data annotation processor
+    optional "org.springframework.boot:spring-boot-configuration-processor"
 }

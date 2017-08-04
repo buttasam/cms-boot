@@ -1,0 +1,24 @@
+debug: true
+spring:
+    datasource:
+        driver-class-name: com.mysql.jdbc.Driver
+        password: root
+        url: jdbc:mysql://localhost/cms_boot?useUnicode=yes&characterEncoding=UTF-8
+        username: root
+    http:
+        encoding:
+            charset: UTF-8
+            enabled: true
+            force: true
+    jpa:
+        hibernate:
+            ddl-auto: update
+    queries:
+        roles-query: SELECT u.email, r.role from user u inner join user_roles ur on(u.id=ur.user_id) inner join role r on(ur.roles_id=r.id) where u.email=?;
+        users-query: SELECT email, password, active FROM user where email=?;
+    resources:
+        cache-period: 0
+    thymeleaf:
+        cache: false
+        content-type: text/html
+        encoding: UTF-8

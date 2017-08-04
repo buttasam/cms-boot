@@ -1,0 +1,13 @@
+{
+  "properties": [
+    {
+      "name": "spring.queries.roles-query",
+      "type": "java.lang.String",
+      "description": "Description for spring.queries.roles-query."
+    },
+    {
+      "name": "spring.queries.users-query",
+      "type": "java.lang.String",
+      "description": "Description for spring.queries.users-query."
+    }
+  ] }
