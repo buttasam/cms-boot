@@ -4,11 +4,3 @@ spring:
     url: jdbc:h2:mem:mymemdb;MODE=MSSQLServer
     username: sa
     password: test
-security:
-  basic:
-    enabled: false
-  user:
-    name: user
-    password: password
-#    data: classpath/data.sql
-#    schema: classpath:schema.sql
