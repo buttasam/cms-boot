@@ -1,11 +1,14 @@
 package app.persistence.entity.auth;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 /**
  * @author Samuel Butta
  */
 @Entity
+@Data
 public class Role {
 
     @Id
@@ -15,20 +18,4 @@ public class Role {
     @Column(unique = true)
     @Enumerated(EnumType.STRING)
     private RoleType role;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public RoleType getRole() {
-        return role;
-    }
-
-    public void setRole(RoleType role) {
-        this.role = role;
-    }
 }

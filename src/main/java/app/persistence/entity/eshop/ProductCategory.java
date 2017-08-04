@@ -1,11 +1,14 @@
 package app.persistence.entity.eshop;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 /**
  * @author Samuel Butta
  */
 @Entity
+@Data
 public class ProductCategory {
 
     @Id
@@ -17,28 +20,4 @@ public class ProductCategory {
 
     @OneToOne
     private ProductCategory parentCategory;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public ProductCategory getParentCategory() {
-        return parentCategory;
-    }
-
-    public void setParentCategory(ProductCategory parentCategory) {
-        this.parentCategory = parentCategory;
-    }
 }
