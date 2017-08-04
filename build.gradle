@@ -6,12 +6,11 @@ buildscript {
     }
     repositories {
         mavenCentral()
+        maven { url 'http://repo.spring.io/plugins-release' }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
-
-    compileJava.dependsOn(processResources)
 }
 
 apply plugin: 'java'
@@ -41,6 +40,9 @@ dependencies {
     // runtime dependencies
     runtime('com.h2database:h2')
 
+    //lombok
+    compileOnly group: 'org.projectlombok', name: 'lombok'
+
     // webjars dependencies
     compile 'org.webjars:bootstrap:3.3.7-1'
     compile 'org.webjars:font-awesome:4.7.0'
@@ -59,5 +61,6 @@ dependencies {
     compile 'org.webjars.bower:moment:2.18.1'
 
     //meta-data annotation processor
-    optional "org.springframework.boot:spring-boot-configuration-processor"
+    compile  group: 'org.springframework.boot', name:'spring-boot-configuration-processor'
+
 }
