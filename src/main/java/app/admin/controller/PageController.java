@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -85,7 +86,10 @@ public class PageController {
     public String renderPage(@PathVariable("url") String url, Model model) {
 
         // TODO osetrit pokud neexistuje
-        Page page = pageRepository.findByUrl(url);
+        Optional<Page> pageOptional = pageRepository.getByUrl(url);
+
+        if (pageOptional.isPresent()) {
+            Page page = pageOptional.get();
 
         PageTextForm pageTextForm = new PageTextForm();
         pageTextForm.setPageId(page.getId());
@@ -95,10 +99,11 @@ public class PageController {
                 .map(p -> new PageTextForm(p.getIdentity(), p.getContent(), p.getPage().getId()))
                 .collect(Collectors.toList());
 
-        model.addAttribute("page", page);
+        model.addAttribute("pageOptional", pageOptional);
         model.addAttribute("pageTextForm", pageTextForm);
 
-        return "admin/page";
+        }
+        return "admin/pageOptional";
     }
 
 }

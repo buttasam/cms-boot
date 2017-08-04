@@ -1,7 +1,6 @@
 package app.persistence.repository.cms;
 
 import app.persistence.entity.cms.Page;
-import app.persistence.entity.cms.PageText;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 /**
  * @author Samuel Butta
  */
+@SuppressWarnings("ConstantConditions")
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
@@ -36,9 +36,9 @@ public class PageRepositoryTest {
 
         pageRepository.save(page);
 
-        Page resultPage = pageRepository.findByUrl("test-url");
+        Page resultPage = pageRepository.getByUrl("test-url").get();
         Assert.assertNotNull(resultPage);
-        Assert.assertNull(pageRepository.findByUrl("url-not-exist"));
+        Assert.assertFalse(pageRepository.getByUrl("url-not-exist").isPresent());
     }
 
 }
