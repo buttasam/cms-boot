@@ -5,7 +5,7 @@ import app.admin.form.PageTextForm;
 import app.persistence.entity.cms.Page;
 import app.persistence.repository.cms.PageRepository;
 import app.persistence.repository.cms.PageTextRepository;
-import app.service.cms.PageService;
+import app.service.cms.api.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -96,7 +96,11 @@ public class PageController {
 
         List<PageTextForm> pageTextEditForms = page.getPageTexts()
                 .stream()
-                .map(p -> new PageTextForm(p.getIdentity(), p.getContent(), p.getPage().getId()))
+                .map(p -> PageTextForm.builder()
+                        .identity(p.getIdentity())
+                        .content(p.getContent())
+                        .pageId(p.getPage().getId())
+                        .build())
                 .collect(Collectors.toList());
 
         model.addAttribute("pageOptional", pageOptional);
