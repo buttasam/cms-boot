@@ -1,46 +1,22 @@
 package app.admin.form;
 
+import lombok.Data;
+
+import javax.validation.constraints.NotNull;
+
 /**
  * @author Samuel Butta
  */
+@Data
 public class PageTextForm {
 
+    @NotNull
     private String identity;
 
+    @NotNull
     private String content;
 
+    @NotNull
     private Long pageId;
 
-    public PageTextForm() {
-    }
-
-    public PageTextForm(String identity, String content, Long pageId) {
-        this.identity = identity;
-        this.content = content;
-        this.pageId = pageId;
-    }
-
-    public String getIdentity() {
-        return identity;
-    }
-
-    public void setIdentity(String identity) {
-        this.identity = identity;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public Long getPageId() {
-        return pageId;
-    }
-
-    public void setPageId(Long pageId) {
-        this.pageId = pageId;
-    }
 }

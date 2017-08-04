@@ -41,7 +41,7 @@ dependencies {
     runtime('com.h2database:h2')
 
     //lombok
-    compileOnly group: 'org.projectlombok', name: 'lombok'
+    compile group: 'org.projectlombok', name: 'lombok'
 
     // webjars dependencies
     compile 'org.webjars:bootstrap:3.3.7-1'

@@ -1,11 +1,14 @@
 package app.admin.form;
 
+import lombok.Data;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
  * @author Samuel Butta
  */
+@Data
 public class PageForm {
 
     @NotNull
@@ -15,19 +18,4 @@ public class PageForm {
     @NotNull
     private String url;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
 }

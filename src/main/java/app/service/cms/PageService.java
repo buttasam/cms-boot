@@ -7,8 +7,11 @@ import app.persistence.entity.cms.PageText;
 import app.persistence.repository.cms.PageImageRepository;
 import app.persistence.repository.cms.PageRepository;
 import app.persistence.repository.cms.PageTextRepository;
+import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.validation.constraints.NotNull;
 
 /**
  * @author Samuel Butta
@@ -17,9 +20,9 @@ import org.springframework.stereotype.Service;
 public class PageService {
 
 
-    private PageRepository pageRepository;
-    private PageImageRepository pageImageRepository;
-    private PageTextRepository pageTextRepository;
+    private final PageRepository pageRepository;
+    private final PageImageRepository pageImageRepository;
+    private final PageTextRepository pageTextRepository;
 
     @Autowired
     public PageService(PageRepository pageRepository, PageImageRepository pageImageRepository, PageTextRepository pageTextRepository) {
@@ -37,7 +40,6 @@ public class PageService {
         pageRepository.save(page);
     }
 
-    // FIXME osetreni
     public void savePageText(PageTextForm pageTextForm) {
         PageText pageText = new PageText();
 
@@ -50,8 +52,7 @@ public class PageService {
         pageTextRepository.save(pageText);
     }
 
-    // FIXME osetreni
-    public void updatePageText(String identity, String content) {
+    public void updatePageText(@NotNull String identity, @NotNull String content) {
         PageText pageText = pageTextRepository.findByIdentity(identity);
         pageText.setContent(content);
 
