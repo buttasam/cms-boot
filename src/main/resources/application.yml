@@ -5,6 +5,7 @@ spring:
         password: root
         url: jdbc:mysql://localhost/cms_boot?useUnicode=yes&characterEncoding=UTF-8
         username: root
+        initialize: false
     http:
         encoding:
             charset: UTF-8
