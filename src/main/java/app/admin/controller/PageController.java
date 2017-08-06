@@ -103,11 +103,11 @@ public class PageController {
                         .build())
                 .collect(Collectors.toList());
 
-        model.addAttribute("pageOptional", pageOptional);
+        model.addAttribute("page", pageOptional.get());
         model.addAttribute("pageTextForm", pageTextForm);
 
         }
-        return "admin/pageOptional";
+        return "admin/page";
     }
 
 }
