@@ -30,7 +30,9 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-security")
     compile("org.springframework.boot:spring-boot-starter-thymeleaf")
     compile("org.springframework.boot:spring-boot-devtools")
+    compile  group: 'org.springframework.boot', name:'spring-boot-configuration-processor'
     compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.42'
+    compile group: 'org.projectlombok', name: 'lombok'
 
     // test compile dependencies
     testCompile('org.springframework.boot:spring-boot-starter-test')
@@ -38,9 +40,6 @@ dependencies {
 
     // runtime dependencies
     runtime('com.h2database:h2')
-
-    //lombok
-    compile group: 'org.projectlombok', name: 'lombok'
 
     // webjars dependencies
     compile 'org.webjars:bootstrap:3.3.7-1'
@@ -58,8 +57,5 @@ dependencies {
     compile 'org.webjars.bower:datejs:1.0.0-rc3'
     compile 'org.webjars.npm:github-com-manifestinteractive-jqvmap:1.5.1'
     compile 'org.webjars.bower:moment:2.18.1'
-
-    //meta-data annotation processor
-    compile  group: 'org.springframework.boot', name:'spring-boot-configuration-processor'
 
 }

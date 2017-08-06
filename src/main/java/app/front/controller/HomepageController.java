@@ -28,6 +28,8 @@ public class HomepageController {
         this.pageRepository = pageRepository;
     }
 
+
+    // TODO remove to service
     private static Map<String, String> mapPage(Page page) {
         return page.getPageTexts()
                 .stream()
