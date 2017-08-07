@@ -1,5 +1,6 @@
 package app.persistence.entity.cms;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
+@Builder
 public class PageImage {
 
     @Id
