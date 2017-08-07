@@ -6,6 +6,7 @@ import app.persistence.entity.cms.Page;
 import app.persistence.repository.cms.PageRepository;
 import app.persistence.repository.cms.PageTextRepository;
 import app.service.cms.api.PageService;
+import app.service.cms.api.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -33,7 +35,7 @@ public class PageController {
      * Services
      */
     private PageService pageService;
-
+    private StorageService storageService;
 
     /**
      * Repositories
@@ -42,8 +44,9 @@ public class PageController {
     private PageTextRepository pageTextRepository;
 
     @Autowired
-    public PageController(PageService pageService, PageRepository pageRepository, PageTextRepository pageTextRepository) {
+    public PageController(PageService pageService, StorageService storageService, PageRepository pageRepository, PageTextRepository pageTextRepository) {
         this.pageService = pageService;
+        this.storageService = storageService;
         this.pageRepository = pageRepository;
         this.pageTextRepository = pageTextRepository;
     }
@@ -108,6 +111,19 @@ public class PageController {
 
         }
         return "admin/page";
+    }
+
+
+    @PostMapping("/addPageImage")
+    public String addPageImage(@RequestParam("file") MultipartFile file,
+                               @RequestParam("identity") String identity,
+                               @RequestParam("pageId") Long pageId) {
+        System.out.println(identity);
+        storageService.store(file);
+
+        // TODO make some method
+        Page page = pageRepository.findOne(pageId);
+        return "redirect:/admin/page/" + page.getUrl();
     }
 
 }
