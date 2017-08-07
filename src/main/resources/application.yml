@@ -23,3 +23,6 @@ spring:
         cache: false
         content-type: text/html
         encoding: UTF-8
+
+upload:
+  work-dir: work #path to workdir

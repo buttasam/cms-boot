@@ -5,3 +5,6 @@ spring:
     username: sa
     password: test
     initialize: true
+
+upload:
+  work-dir: work
