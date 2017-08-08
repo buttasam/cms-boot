@@ -1,4 +1,4 @@
-package app.service.cms;
+package app.common.service.cms;
 
 import app.admin.form.PageForm;
 import app.admin.form.PageTextForm;
@@ -7,7 +7,7 @@ import app.persistence.entity.cms.PageText;
 import app.persistence.repository.cms.PageImageRepository;
 import app.persistence.repository.cms.PageRepository;
 import app.persistence.repository.cms.PageTextRepository;
-import app.service.cms.api.PageService;
+import app.common.service.cms.api.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

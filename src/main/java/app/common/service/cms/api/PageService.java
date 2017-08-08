@@ -1,4 +1,4 @@
-package app.service.cms.api;
+package app.common.service.cms.api;
 
 import app.admin.form.PageForm;
 import app.admin.form.PageTextForm;

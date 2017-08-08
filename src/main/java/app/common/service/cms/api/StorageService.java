@@ -1,4 +1,4 @@
-package app.service.cms.api;
+package app.common.service.cms.api;
 
 import app.persistence.entity.cms.Page;
 import org.springframework.core.io.Resource;

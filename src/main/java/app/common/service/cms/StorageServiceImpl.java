@@ -1,5 +1,6 @@
-package app.service.cms.api;
+package app.common.service.cms;
 
+import app.common.service.cms.api.StorageService;
 import app.persistence.entity.cms.Page;
 import app.persistence.entity.cms.PageImage;
 import app.persistence.repository.cms.PageImageRepository;
