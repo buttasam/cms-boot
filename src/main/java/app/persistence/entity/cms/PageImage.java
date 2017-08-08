@@ -11,7 +11,6 @@ import javax.persistence.*;
 
 @Entity
 @Data
-@Builder
 public class PageImage {
 
     @Id
@@ -22,7 +21,10 @@ public class PageImage {
     private Page page;
 
     @Column
-    private String name;
+    private String fileName;
+
+    @Column(unique = true)
+    private String identity;
 
     @Column
     private String path;

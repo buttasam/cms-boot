@@ -9,7 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 public interface StorageService {
 
-    public void store(MultipartFile file, Page page);
+    public void store(MultipartFile file, String identity, Page page);
 
 
     public Resource loadAsResource(String fileName);

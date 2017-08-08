@@ -119,7 +119,7 @@ public class PageController {
                                @RequestParam("identity") String identity,
                                @RequestParam("pageId") Long pageId) {
         Page page = pageRepository.findOne(pageId);
-        storageService.store(file, page);
+        storageService.store(file, identity, page);
 
         return "redirect:/admin/page/" + page.getUrl();
     }

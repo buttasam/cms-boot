@@ -48,10 +48,15 @@ public class StorageServiceImpl implements StorageService {
     }
 
     @Override
-    public void store(MultipartFile file, Page page) {
+    public void store(MultipartFile file, String identity, Page page) {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
-        PageImage pageImage = PageImage.builder().name(fileName).page(page).build();
+        // PageImage pageImage = PageImage.builder().name(fileName).page(page).build(); FIXME
+        PageImage pageImage = new PageImage();
+        pageImage.setFileName(fileName);
+        pageImage.setIdentity(identity);
+        pageImage.setPage(page);
+
         pageImageRepository.save(pageImage);
 
         if(file.isEmpty() || fileName.contains("..")) {
