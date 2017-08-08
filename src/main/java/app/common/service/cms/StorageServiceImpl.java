@@ -4,7 +4,9 @@ import app.common.service.cms.api.StorageService;
 import app.persistence.entity.cms.Page;
 import app.persistence.entity.cms.PageImage;
 import app.persistence.repository.cms.PageImageRepository;
-import groovy.lang.Singleton;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -24,9 +26,9 @@ import java.nio.file.Paths;
  * @author Samuel Butta
  */
 @Service
-@Singleton
 public class StorageServiceImpl implements StorageService {
 
+    private static final Logger LOG = LoggerFactory.getLogger(StorageServiceImpl.class);
 
     @Value("${upload.work-dir}")
     private String uploadWorkdir;
@@ -59,18 +61,20 @@ public class StorageServiceImpl implements StorageService {
 
         pageImageRepository.save(pageImage);
 
-        if(file.isEmpty() || fileName.contains("..")) {
+        if (file.isEmpty() || fileName.contains("..")) {
             // TODO invalid file exception
         }
 
         try {
             Files.copy(file.getInputStream(), uploadPath.resolve(fileName));
+            LOG.info("file with name {} was stored", fileName);
         } catch (IOException e) {
-            e.printStackTrace();
+            LOG.error("file was not stored", e);
         }
 
     }
 
+    // TODO Optional
     @Override
     public Resource loadAsResource(String fileName) {
         try {
@@ -79,7 +83,7 @@ public class StorageServiceImpl implements StorageService {
 
             return resource;
         } catch (MalformedURLException e) {
-            e.printStackTrace();
+            LOG.error("resource was not loaded", e);
         }
         return null;
     }
