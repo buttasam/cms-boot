@@ -59,14 +59,8 @@ public class StorageServiceImpl implements StorageService {
 
         Optional<PageImage> pageImageOpt = pageImageRepository.getByIdentity(identity);
 
-        // update existujiciho obrazku
-        PageImage pageImage;
-        if(pageImageOpt.isPresent()) {
-            pageImage = pageImageOpt.get();
-        } else {
-            pageImage = new PageImage();
-        }
-
+        // update existujiciho obrazku, pripadne vytvoreni noveho
+        PageImage pageImage = pageImageOpt.orElseGet(PageImage::new);
         pageImage.setFileName(fileName);
         pageImage.setIdentity(identity);
         pageImage.setPage(page);
