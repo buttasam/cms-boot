@@ -21,6 +21,8 @@ import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.Optional;
 
 /**
  * @author Samuel Butta
@@ -54,7 +56,17 @@ public class StorageServiceImpl implements StorageService {
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
         // PageImage pageImage = PageImage.builder().name(fileName).page(page).build(); FIXME
-        PageImage pageImage = new PageImage();
+
+        Optional<PageImage> pageImageOpt = pageImageRepository.getByIdentity(identity);
+
+        // update existujiciho obrazku
+        PageImage pageImage;
+        if(pageImageOpt.isPresent()) {
+            pageImage = pageImageOpt.get();
+        } else {
+            pageImage = new PageImage();
+        }
+
         pageImage.setFileName(fileName);
         pageImage.setIdentity(identity);
         pageImage.setPage(page);
@@ -66,7 +78,7 @@ public class StorageServiceImpl implements StorageService {
         }
 
         try {
-            Files.copy(file.getInputStream(), uploadPath.resolve(fileName));
+            Files.copy(file.getInputStream(), uploadPath.resolve(fileName), StandardCopyOption.REPLACE_EXISTING);
             LOG.info("file with name {} was stored", fileName);
         } catch (IOException e) {
             LOG.error("file was not stored", e);

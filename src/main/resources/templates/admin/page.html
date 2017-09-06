@@ -191,7 +191,9 @@
                                 <div class="clearfix"></div>
                             </div>
 
-                            <form method="post" class="form-horizontal form-label-left">
+
+                            <form th:action="@{/admin/addPageImage}" method="post" enctype="multipart/form-data"
+                                  class="form-horizontal form-label-left">
 
                                 <div class="form-group">
 
@@ -201,19 +203,29 @@
 
                                 </div>
 
-                                <div class="form-group">
-                                    <input name="file" type="file" required="required"
-                                           class="form-control col-md-7 col-xs-12"/>
-                                </div>
+                                <input name="identity" type="hidden" th:value="${pageImage.identity}"/>
 
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                        Vyberte soubor
+                                        <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-8 col-sm-8 col-xs-12">
+                                        <input name="file" type="file" required="required"
+                                               class="form-control col-md-7 col-xs-12"/>
+                                    </div>
+                                </div>
                                 <div class="ln_solid"></div>
+
+                                <input name="pageId" type="hidden" th:value="${page.id}"/>
 
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                        <button type="submit" class="btn btn-success">Nahradit</button>
+                                        <input type="submit" class="btn btn-success" value="Nahradit"/>
                                     </div>
                                 </div>
                             </form>
+
                         </div>
                     </div>
                 </div>
