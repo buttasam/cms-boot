@@ -21,6 +21,54 @@
                 <h3 th:text="${page.title}"></h3>
             </div>
 
+            <!-- show subpages -->
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Podstránky</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                </li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Titulek</th>
+                                    <th>Url</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr th:each="subPage : ${page.subPages}">
+                                    <td th:text="${subPage.title}"></td>
+                                    <td th:text="${subPage.url}"></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                        <div class="ln_solid"></div>
+
+                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                <a class="btn btn-warning" th:href="@{/admin/addPage(parentPageId=${page.id})}">Přidat podstránku</a>
+                            </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /show subpages -->
+
             <!-- add new pagetext -->
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -198,7 +246,8 @@
                                 <div class="form-group">
 
                                     <div class="image view view-first">
-                                        <img style="width: 100%; display: block;" th:src="'/file/' + ${pageImage.fileName}" alt="image"/>
+                                        <img style="width: 100%; display: block;"
+                                             th:src="'/file/' + ${pageImage.fileName}" alt="image"/>
                                     </div>
 
                                 </div>

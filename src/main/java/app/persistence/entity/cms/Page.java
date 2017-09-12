@@ -29,4 +29,11 @@ public class Page {
 
     @OneToMany(mappedBy = "page")
     private List<PageImage> pageImages = new ArrayList<>();
+
+    @ManyToOne(cascade={CascadeType.ALL})
+    @JoinColumn(name="parent_page_id")
+    private Page parentPage;
+
+    @OneToMany(mappedBy = "parentPage")
+    private List<Page> subPages;
 }

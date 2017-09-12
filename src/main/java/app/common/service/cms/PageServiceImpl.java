@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 /**
  * @author Samuel Butta
@@ -38,6 +39,16 @@ class PageServiceImpl implements PageService {
         page.setTitle(pageForm.getTitle());
         page.setUrl(pageForm.getUrl());
 
+        // FIXME
+        Page parentPage = pageRepository.getOne(pageForm.getParentPageId());
+
+        List<Page> subPages = parentPage.getSubPages();
+        subPages.add(page);
+
+        parentPage.setSubPages(subPages);
+        page.setParentPage(parentPage);
+
+        pageRepository.save(parentPage);
         pageRepository.save(page);
     }
 

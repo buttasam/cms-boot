@@ -53,7 +53,9 @@ public class PageController {
 
 
     @RequestMapping("/addPage")
-    public String renderDashboard(PageForm pageForm) {
+    public String addPage(@RequestParam(required = false) Long parentPageId, PageForm pageForm, Model model) {
+        model.addAttribute("parentPageId", parentPageId);
+
         return "admin/addPage";
     }
 

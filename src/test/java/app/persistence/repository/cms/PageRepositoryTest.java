@@ -10,6 +10,9 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author Samuel Butta
  */
@@ -41,4 +44,27 @@ public class PageRepositoryTest {
         Assert.assertFalse(pageRepository.getByUrl("url-not-exist").isPresent());
     }
 
+
+    @Test
+    public void testSubpages() {
+        Page parent = new Page();
+        parent.setUrl("parent-1");
+
+        Page sub1 = new Page();
+        sub1.setUrl("sub-1");
+        sub1.setParentPage(parent);
+
+        Page sub2 = new Page();
+        sub2.setUrl("sub-2");
+        sub2.setParentPage(parent);
+
+        List<Page> sublist = new ArrayList<>();
+        sublist.add(sub1);
+        sublist.add(sub2);
+        parent.setSubPages(sublist);
+
+        pageRepository.save(parent);
+
+        Page resultPage = pageRepository.getByUrl("parent-1").get();
+    }
 }

@@ -18,4 +18,6 @@ public class PageForm {
     @NotNull
     private String url;
 
+    private Long parentPageId;
+
 }
