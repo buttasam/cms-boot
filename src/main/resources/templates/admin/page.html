@@ -50,7 +50,7 @@
                                 <tbody>
 
                                 <tr th:each="subPage : ${page.subPages}">
-                                    <td th:text="${subPage.title}"></td>
+                                    <td> <a th:href="@{/admin/page/} + ${subPage.url}" th:text="${subPage.title}"></a> </td>
                                     <td th:text="${subPage.url}"></td>
                                 </tr>
 
@@ -61,9 +61,10 @@
 
                         <div class="ln_solid"></div>
 
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                <a class="btn btn-warning" th:href="@{/admin/addPage(parentPageId=${page.id})}">Přidat podstránku</a>
-                            </div>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <a class="btn btn-warning" th:href="@{/admin/addPage(parentPageId=${page.id})}">Přidat
+                                podstránku</a>
+                        </div>
                     </div>
                 </div>
             </div>
