@@ -31,7 +31,7 @@ public class CommonController {
         String loggedUserName = authentication != null ? authentication.getName() : "No user logged in";
 
         model.addAttribute("version", "1.0"); // TODO real version number
-        model.addAttribute("pages", pageRepository.findAll());
+        model.addAttribute("pages", pageRepository.findByParentPage(null)); // FIXME add wrapp to service method
         model.addAttribute("loggedUserName", loggedUserName);
     }
 
