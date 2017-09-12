@@ -39,16 +39,20 @@ class PageServiceImpl implements PageService {
         page.setTitle(pageForm.getTitle());
         page.setUrl(pageForm.getUrl());
 
-        // FIXME
-        Page parentPage = pageRepository.getOne(pageForm.getParentPageId());
+        Long parentPageId = pageForm.getParentPageId();
 
-        List<Page> subPages = parentPage.getSubPages();
-        subPages.add(page);
+        Page parentPage = null;
+        if(parentPageId != null) {
+            parentPage = pageRepository.getOne(pageForm.getParentPageId());
 
-        parentPage.setSubPages(subPages);
+            List<Page> subPages = parentPage.getSubPages();
+            subPages.add(page);
+
+            parentPage.setSubPages(subPages);
+            pageRepository.save(parentPage);
+        }
         page.setParentPage(parentPage);
 
-        pageRepository.save(parentPage);
         pageRepository.save(page);
     }
 
