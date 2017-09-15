@@ -3,6 +3,8 @@ package app.persistence.entity.eshop;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Samuel Butta
@@ -20,4 +22,7 @@ public class ProductCategory {
 
     @OneToOne
     private ProductCategory parentCategory;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Product> products = new ArrayList<>();
 }

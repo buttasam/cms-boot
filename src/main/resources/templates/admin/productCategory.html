@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/fragments/header :: head">
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <!-- main menu -->
+        <div th:replace="admin/fragments/header :: main-menu"></div>
+        <!-- /main menu -->
+
+        <!-- top navigation -->
+        <div th:replace="admin/fragments/header :: top-menu"></div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+
+            <div class="title_left">
+                <h3>řehled kategorií"</h3>
+            </div>
+
+            <!-- show subpages -->
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Podkategorie</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                       aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                </li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>Titulek</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                <tr>
+                                    <td>data</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                        <div class="ln_solid"></div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <a class="btn btn-warning">Přidat
+                                podstránku</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /show subpages -->
+
+        </div>
+        <!-- /page content -->
+    </div>
+
+
+    <!-- footer content -->
+    <footer th:replace="admin/fragments/footer :: footer"></footer>
+    <!-- /footer content -->
+</div>
+
+<div th:replace="admin/fragments/footer :: footer-scripts"></div>
+
+</body>
+</html>

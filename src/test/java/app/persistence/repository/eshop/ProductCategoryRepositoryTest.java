@@ -1,5 +1,6 @@
 package app.persistence.repository.eshop;
 
+import app.persistence.entity.eshop.Product;
 import app.persistence.entity.eshop.ProductCategory;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,6 +10,8 @@ import org.springframework.boot.autoconfigure.jdbc.EmbeddedDatabaseConnection;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.ArrayList;
 
 /**
  * @author Samuel Butta
@@ -22,6 +25,11 @@ public class ProductCategoryRepositoryTest {
 
     @Autowired
     private ProductCategoryRepository productCategoryRepository;
+
+
+    @Autowired
+    private ProductRepository productRepository;
+
 
     @Test
     public void testSaveCategoryWithParentCategory() {
@@ -48,4 +56,29 @@ public class ProductCategoryRepositoryTest {
     }
 
 
+    @Test
+    public void testSaveProductsAndProductCategories() {
+        Product productPhone = new Product();
+        productPhone.setTitle("phone");
+
+        Product productTv = new Product();
+        productTv.setTitle("tv");
+
+        ProductCategory category = new ProductCategory();
+
+        ArrayList<Product> products = new ArrayList<>();
+        products.add(productPhone);
+        products.add(productTv);
+
+        category.setProducts(products);
+
+        productPhone.getProductCategories().add(category);
+        productTv.getProductCategories().add(category);
+
+        productRepository.save(productPhone);
+        productRepository.save(productTv);
+        productCategoryRepository.save(category);
+
+        ProductCategory resultCategory = productCategoryRepository.findOne(1L);
+    }
 }
