@@ -37,7 +37,8 @@
         <div th:fragment="top-menu" class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a th:href="@{/admin/dashboard}" class="site_title"><i class="fa fa-user"></i> <span>Administrace</span></a>
+                    <a th:href="@{/admin/dashboard}" class="site_title"><i class="fa fa-user"></i>
+                        <span>Administrace</span></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -67,11 +68,19 @@
                     <div class="menu_section">
                         <h3>E-shop</h3>
                         <ul class="nav side-menu">
-                            <li><a><i class="fa fa-bug"></i> Additional Pages <span
+                            <li><a><i class="fa fa-bug"></i> Kategorie <span
                                     class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a th:href="@{/admin/shop/productCategory}">Kategorie</a></li>
-                                    <li><a href="projects.html">Produkty</a></li>
+                                    <li><a th:href="@{/admin/shop/productCategory}">Seznam kategorií</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-bug"></i> Produkty <span
+                                    class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu">
+                                    <li><a th:href="@{/admin/product/all}">Seznam produktů</a></li>
+                                    <li><a th:href="@{/admin/product/addProduct}">Přidat produkt</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -106,7 +115,8 @@
 
                     <ul class="nav navbar-nav navbar-right">
                         <li class="">
-                            <a th:text="${loggedUserName}" href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
+                            <a th:text="${loggedUserName}" href="javascript:;" class="user-profile dropdown-toggle"
+                               data-toggle="dropdown"
                                aria-expanded="false">
                                 <span class=" fa fa-angle-down"></span>
                             </a>
