@@ -1,6 +1,15 @@
 SET NAMES utf8;
 SET foreign_key_checks = 0;
 
+INSERT INTO `role` (`id`, `role`) VALUES
+(1,	'ADMIN');
+
+INSERT INTO `user` (`id`, `active`, `email`, `first_name`, `last_name`, `password`) VALUES
+(1,	CONV('1', 2, 10) + 0,	'admin@admin.cz',	'Sam',	NULL,	'$2a$10$cIZhwKsIsM9kv6guM.iQnOCNKIfIaGSEkrJ7OSU2.02hmtAHAbCou');
+
+INSERT INTO `user_roles` (`user_id`, `roles_id`) VALUES
+(1,	1);
+
 INSERT INTO `page` (`id`, `url`, `title`) VALUES
 (1,	'test-1',	'Test1'),
 (2,	'test-2',	'Test 2'),

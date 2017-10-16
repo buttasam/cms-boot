@@ -6,9 +6,11 @@ buildscript {
     }
     repositories {
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath 'org.hidetake:gradle-ssh-plugin:2.9.0'
     }
 }
 
@@ -16,6 +18,9 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
+
+// gradle deploy ssh
+apply plugin: 'org.hidetake.ssh'
 
 sourceCompatibility = 1.8
 
@@ -58,4 +63,25 @@ dependencies {
     compile 'org.webjars.npm:github-com-manifestinteractive-jqvmap:1.5.1'
     compile 'org.webjars.bower:moment:2.18.1'
 
+}
+
+
+remotes {
+    webServer {
+        host = '165.227.167.36'
+        user = 'root'
+        identity = file('/home/samik/.ssh/id_rsa') // FIXME
+    }
+}
+
+task deploy {
+    doLast {
+        ssh.run {
+            session(remotes.webServer) {
+                // execute '/app/cms-boot/stop.sh'
+                put from: 'build/libs/cms-boot-0.0.1-SNAPSHOT.jar', into: '/app/cms-boot'
+                //execute '/app/cms-boot/start.sh'
+            }
+        }
+    }
 }
