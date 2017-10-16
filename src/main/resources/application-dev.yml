@@ -1,7 +1,7 @@
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:mymemdb;MODE=MSSQLServer
+    url: jdbc:h2:mem:mymemdb;MODE=MySQL
     username: sa
     password: test
     initialize: true
