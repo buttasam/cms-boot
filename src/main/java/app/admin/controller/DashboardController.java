@@ -1,14 +1,15 @@
 package app.admin.controller;
 
-import org.springframework.stereotype.Controller;
+import app.admin.controller.parent.AdminAbstractController;
+import app.config.anotation.AdminController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author Samuel Butta
  */
-@Controller
+@AdminController
 @RequestMapping("/admin")
-public class DashboardController extends AdminController {
+public class DashboardController extends AdminAbstractController {
 
     @RequestMapping
     public String renderIndex() {

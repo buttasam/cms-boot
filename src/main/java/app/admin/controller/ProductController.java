@@ -1,11 +1,12 @@
 package app.admin.controller;
 
 
+import app.admin.controller.parent.AdminAbstractController;
 import app.admin.form.ProductForm;
 import app.common.service.eshop.api.ProductService;
+import app.config.anotation.AdminController;
 import app.persistence.repository.eshop.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,9 +18,9 @@ import javax.validation.Valid;
  * @author Samuel Butta
  */
 
-@Controller
+@AdminController
 @RequestMapping("/admin/product")
-public class ProductController extends AdminController {
+public class ProductController extends AdminAbstractController {
 
 
     private ProductService productService;

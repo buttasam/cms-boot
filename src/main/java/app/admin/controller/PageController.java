@@ -1,14 +1,15 @@
 package app.admin.controller;
 
+import app.admin.controller.parent.AdminAbstractController;
 import app.admin.form.PageForm;
 import app.admin.form.PageTextForm;
 import app.common.service.cms.api.PageService;
 import app.common.service.cms.api.StorageService;
+import app.config.anotation.AdminController;
 import app.persistence.entity.cms.Page;
 import app.persistence.repository.cms.PageRepository;
 import app.persistence.repository.cms.PageTextRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,9 +27,9 @@ import java.util.stream.Collectors;
 /**
  * @author Samuel Butta
  */
-@Controller
+@AdminController
 @RequestMapping("/admin")
-public class PageController extends AdminController {
+public class PageController extends AdminAbstractController {
 
 
     /**

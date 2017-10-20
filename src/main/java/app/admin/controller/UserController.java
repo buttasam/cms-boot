@@ -1,9 +1,10 @@
 package app.admin.controller;
 
+import app.admin.controller.parent.AdminAbstractController;
+import app.config.anotation.AdminController;
 import app.persistence.entity.auth.User;
 import app.persistence.repository.auth.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author Samuel Butta
  */
 
-@Controller
+@AdminController
 @RequestMapping("admin/users")
-public class UserController extends AdminController {
+public class UserController extends AdminAbstractController {
 
 
     @Autowired

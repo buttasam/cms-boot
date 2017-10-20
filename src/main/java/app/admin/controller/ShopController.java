@@ -1,6 +1,7 @@
 package app.admin.controller;
 
-import org.springframework.stereotype.Controller;
+import app.admin.controller.parent.AdminAbstractController;
+import app.config.anotation.AdminController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -8,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author Samuel Butta
  */
 
-@Controller
+@AdminController
 @RequestMapping("/admin/shop")
-public class ShopController extends AdminController {
+public class ShopController extends AdminAbstractController {
 
 
     @RequestMapping("/productCategory")
