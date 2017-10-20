@@ -43,6 +43,7 @@ public class AdminCommonController extends AdminAbstractController {
         String loggedUserName = authentication != null ? authentication.getName() : "No user logged in";
 
         model.addAttribute("version", version);
+        model.addAttribute("pages", pageRepository.findByParentPage(null)); // FIXME add wrapp to service method
         model.addAttribute("loggedUserName", loggedUserName);
     }
 

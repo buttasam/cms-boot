@@ -1,4 +1,3 @@
-debug: true
 spring:
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
@@ -19,10 +18,6 @@ spring:
         users-query: SELECT email, password, active FROM user where email=?;
     resources:
         cache-period: 0
-    thymeleaf:
-        cache: false
-        content-type: text/html
-        encoding: UTF-8
 
 upload:
   work-dir: work #path to workdir
