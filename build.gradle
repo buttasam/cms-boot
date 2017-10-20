@@ -1,4 +1,7 @@
-version = '0.0.1-SNAPSHOT'
+def props = new Properties()
+file("application.properties").withInputStream { props.load(it) }
+
+version = props.getProperty("buildVersion")
 
 buildscript {
     ext {

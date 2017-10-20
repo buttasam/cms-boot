@@ -1,12 +1,12 @@
 package app.admin.controller.common;
 
 import app.admin.controller.parent.AdminAbstractController;
-import app.common.service.cms.StorageServiceImpl;
 import app.config.anotation.AdminController;
 import app.persistence.repository.cms.PageRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.ui.Model;
@@ -30,6 +30,10 @@ public class AdminCommonController extends AdminAbstractController {
         this.pageRepository = pageRepository;
     }
 
+
+    @Value("${buildVersion}")
+    private String version;
+
     @ModelAttribute
     public void addCommonAttributes(Model model) {
         LOG.debug("model attribute method was called");
@@ -38,8 +42,7 @@ public class AdminCommonController extends AdminAbstractController {
 
         String loggedUserName = authentication != null ? authentication.getName() : "No user logged in";
 
-        model.addAttribute("version", "1.0"); // TODO real version number
-        model.addAttribute("pages", pageRepository.findByParentPage(null)); // FIXME add wrapp to service method
+        model.addAttribute("version", version);
         model.addAttribute("loggedUserName", loggedUserName);
     }
 
