@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("admin/users")
-public class UserController {
+public class UserController extends AdminController {
 
 
     @Autowired
@@ -35,12 +35,12 @@ public class UserController {
         // delete user
         User user = userRepository.getOne(userId);
 
-        if(user != null) {
+        if (user != null) {
             user.setActive(false);
             userRepository.save(user);
         }
 
-        return "redirect:/admin/users/all";
+        return redirect("/admin/users/all");
     }
 
 }

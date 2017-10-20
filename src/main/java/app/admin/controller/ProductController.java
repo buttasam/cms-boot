@@ -19,7 +19,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/admin/product")
-public class ProductController {
+public class ProductController extends AdminController {
 
 
     private ProductService productService;
@@ -54,7 +54,7 @@ public class ProductController {
             productService.saveProduct(productForm);
         }
 
-        return "redirect:/admin/product/all";
+        return redirect("admin/product/all");
     }
 
 }

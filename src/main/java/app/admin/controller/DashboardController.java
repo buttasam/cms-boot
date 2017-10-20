@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 @RequestMapping("/admin")
-public class DashboardController {
+public class DashboardController extends AdminController {
 
     @RequestMapping
     public String renderIndex() {
-        return "redirect:/admin/dashboard";
+        return redirect("/admin/dashboard");
     }
 
     @RequestMapping("/dashboard")

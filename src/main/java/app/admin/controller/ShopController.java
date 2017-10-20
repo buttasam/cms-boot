@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/admin/shop")
-public class ShopController {
+public class ShopController extends AdminController {
 
 
     @RequestMapping("/productCategory")

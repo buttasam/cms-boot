@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
  * @author Samuel Butta
  */
 @ControllerAdvice
-public class CommonController {
+public class CommonController extends AdminController {
 
     private PageRepository pageRepository;
 

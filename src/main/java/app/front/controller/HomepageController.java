@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
  * @author Samuel Butta
  */
 @Controller
-public class HomepageController {
+public class HomepageController extends FrontController {
 
 
     private PageRepository pageRepository;

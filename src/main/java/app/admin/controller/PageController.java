@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
  */
 @Controller
 @RequestMapping("/admin")
-public class PageController {
+public class PageController extends AdminController {
 
 
     /**
@@ -67,7 +67,7 @@ public class PageController {
             pageService.savePage(pageForm);
         }
 
-        return "redirect:/admin/addPage";
+        return redirect("/admin/addPage");
     }
 
     @PostMapping("/page")
@@ -75,7 +75,7 @@ public class PageController {
 
         pageService.savePageText(pageTextForm);
 
-        return "redirect:/admin/addPage";
+        return redirect("/admin/addPage");
     }
 
     @PostMapping("/page/editPageText")
@@ -83,7 +83,7 @@ public class PageController {
         pageService.updatePageText(identity, content);
         Page page = pageRepository.findOne(pageId);
 
-        return "redirect:/admin/page/" + page.getUrl();
+        return redirect("/admin/page/" + page.getUrl());
     }
 
 
@@ -123,7 +123,7 @@ public class PageController {
         Page page = pageRepository.findOne(pageId);
         storageService.store(file, identity, page);
 
-        return "redirect:/admin/page/" + page.getUrl();
+        return redirect("/admin/page/" + page.getUrl());
     }
 
 }
