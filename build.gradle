@@ -1,7 +1,4 @@
-def props = new Properties()
-file("application.properties").withInputStream { props.load(it) }
-
-version = props.getProperty("buildVersion")
+version = "0.2-SNAPSHOT"
 
 buildscript {
     ext {
@@ -82,7 +79,7 @@ task deploy {
         ssh.run {
             session(remotes.webServer) {
                 // execute '/app/cms-boot/stop.sh'
-                put from: 'build/libs/cms-boot-0.0.1-SNAPSHOT.jar', into: '/app/cms-boot'
+                put from: "build/libs/cms-boot-${version}.jar", into: '/app/cms-boot'
                 //execute '/app/cms-boot/start.sh'
             }
         }

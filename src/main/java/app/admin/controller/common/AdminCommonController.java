@@ -31,9 +31,6 @@ public class AdminCommonController extends AdminAbstractController {
     }
 
 
-    @Value("${buildVersion}")
-    private String version;
-
     @ModelAttribute
     public void addCommonAttributes(Model model) {
         LOG.debug("model attribute method was called");
@@ -42,7 +39,7 @@ public class AdminCommonController extends AdminAbstractController {
 
         String loggedUserName = authentication != null ? authentication.getName() : "No user logged in";
 
-        model.addAttribute("version", version);
+        model.addAttribute("version", "0.2-SNAPSHOT");
         model.addAttribute("pages", pageRepository.findByParentPage(null)); // FIXME add wrapp to service method
         model.addAttribute("loggedUserName", loggedUserName);
     }
