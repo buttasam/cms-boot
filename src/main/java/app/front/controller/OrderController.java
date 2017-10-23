@@ -5,6 +5,7 @@ import app.front.controller.parent.FrontAbstractController;
 import app.front.form.OrderForm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,7 +21,7 @@ public class OrderController extends FrontAbstractController {
 
     Logger LOG = LoggerFactory.getLogger(OrderController.class);
 
-    @RequestMapping(value = "objednavka")
+    @RequestMapping(value = "/objednavka")
     public String order(OrderForm orderForm) {
 
         return "front/order";
