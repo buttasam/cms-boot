@@ -46,13 +46,10 @@ public class AdminCommonController extends AdminAbstractController {
         String loggedUserEmail = authentication != null ? authentication.getName() : "No user logged in";
 
         User loggedUser = userRepository.findByEmail(loggedUserEmail);
-        boolean isDeveloper = loggedUser.getRoles().stream().filter(role -> role.getRole().equals(RoleType.DEVELOPER)).count() == 1; // FIXME
-
 
         model.addAttribute("version", "0.2-SNAPSHOT");
         model.addAttribute("pages", pageRepository.findByParentPage(null)); // FIXME add wrapp to service method
         model.addAttribute("loggedUserName", loggedUserEmail);
-        model.addAttribute("isDeveloper", isDeveloper);
     }
 
 }

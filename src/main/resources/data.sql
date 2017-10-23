@@ -28,9 +28,9 @@ INSERT INTO `product_category` (`id`, `name`, `parent_category_id`) VALUES
   (12, 'kategorie 1', 11);
 
 INSERT INTO `role` (`id`, `role`) VALUES
-  (1, 'USER'),
-  (2, 'ADMIN'),
-  (3, 'DEVELOPER');
+  (1, 'ROLE_USER'),
+  (2, 'ROLE_ADMIN'),
+  (3, 'ROLE_DEVELOPER');
 
 INSERT INTO `user` (`id`, `active`, `email`, `first_name`, `last_name`, `password`) VALUES
   (1, 1, 'developer@admin.cz', 'Joe', 'Doe', '$2a$10$cIZhwKsIsM9kv6guM.iQnOCNKIfIaGSEkrJ7OSU2.02hmtAHAbCou'),

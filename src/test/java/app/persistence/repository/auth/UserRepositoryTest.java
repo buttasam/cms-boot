@@ -3,7 +3,6 @@ package app.persistence.repository.auth;
 import app.persistence.entity.auth.Role;
 import app.persistence.entity.auth.RoleType;
 import app.persistence.entity.auth.User;
-import app.persistence.repository.auth.UserRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +31,7 @@ public class UserRepositoryTest {
     public void testSaveUserWithRole() {
 
         Role admin = new Role();
-        admin.setRole(RoleType.ADMIN);
+        admin.setRole(RoleType.ROLE_ADMIN);
         Set<Role> roles = new HashSet<>();
         roles.add(admin);
 
@@ -50,7 +49,7 @@ public class UserRepositoryTest {
 
         Assert.assertEquals(email, resultUser.getEmail());
         Assert.assertEquals(1, resultUser.getRoles().size());
-        Assert.assertEquals(RoleType.ADMIN, resultUser.getRoles().iterator().next().getRole());
+        Assert.assertEquals(RoleType.ROLE_ADMIN, resultUser.getRoles().iterator().next().getRole());
     }
 
 

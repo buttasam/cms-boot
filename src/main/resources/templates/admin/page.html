@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="admin/fragments/header :: head">
 </head>
 
@@ -61,7 +61,7 @@
 
                             <div class="ln_solid"></div>
 
-                            <div th:if="${isDeveloper}" class="col-md-6 col-sm-6 col-xs-12">
+                            <div sec:authorize="hasRole('DEVELOPER')" class="col-md-6 col-sm-6 col-xs-12">
                                 <a class="btn btn-warning" th:href="@{/admin/addPage(parentPageId=${page.id})}">Přidat podstránku</a>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
             <!-- /show subpages -->
 
             <!-- add new pagetext -->
-            <div th:if="${isDeveloper}" class="row">
+            <div sec:authorize="hasRole('DEVELOPER')" class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
@@ -126,7 +126,7 @@
             <!-- /add new pagetext -->
 
             <!-- add new pageimage -->
-            <div th:if="${isDeveloper}" class="row">
+            <div sec:authorize="hasRole('DEVELOPER')" class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">

@@ -39,6 +39,10 @@ dependencies {
     compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.42'
     compile group: 'org.projectlombok', name: 'lombok'
 
+    // thymeleaf
+    compile group: 'org.thymeleaf.extras', name: 'thymeleaf-extras-springsecurity4', version: '2.1.2.RELEASE'
+
+
     // test compile dependencies
     testCompile('org.springframework.boot:spring-boot-starter-test')
     testCompile("junit:junit")

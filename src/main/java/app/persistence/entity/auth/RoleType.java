@@ -7,8 +7,8 @@ package app.persistence.entity.auth;
  */
 public enum RoleType {
 
-    USER,
-    ADMIN,
-    DEVELOPER
+    ROLE_USER,
+    ROLE_ADMIN,
+    ROLE_DEVELOPER
 
 }
