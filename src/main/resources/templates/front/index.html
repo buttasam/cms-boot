@@ -1,23 +1,27 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head>
-    <title>Cms boot</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head th:replace="front/fragments/header :: head">
 </head>
+
 <body>
-<p th:text="'Hello, ' + ${name} + '!'"/>
 
-<p th:text="${pageTexts.get('wellcome-text')}"/>
+<!-- main menu -->
+<div th:replace="front/fragments/header :: main-menu"></div>
+<!-- /main menu -->
 
-<image src="file/test.png"></image>
-
-<h1 th:text="#{foo.name}"></h1>
-<div style="width: 250px; height: 250px; background: black"></div>
-
-<span sec:authorize="isAuthenticated()">
-    <span sec:authentication="name"></span>
-    <span sec:authentication="principal.authorities"></span>
-</span>
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1 class="mt-5" th:text="${pageTexts.get('wellcome-text')}">A Bootstrap 4 Starter Template</h1>
+            <ul sec:authorize="isAuthenticated()" class="list-unstyled">
+                <li sec:authentication="name"></li>
+                <li sec:authentication="principal.authorities"></li>
+            </ul>
+            <image src="file/test.png"></image>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

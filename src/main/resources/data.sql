@@ -2,18 +2,19 @@ SET NAMES utf8;
 SET foreign_key_checks = 0;
 
 INSERT INTO `page` (`id`, `url`, `title`) VALUES
-  (1, 'o-firme', 'O firmě'),
-  (2, 'projekce', 'Projece'),
-  (3, 'kontrola', 'Kontrola'),
-  (4, 'normy', 'Normy'),
-  (5, 'objednavky', 'Objednavky');
+  (1, 'homepage', 'Domovská stránka'),
+  (2, 'o-firme', 'O firmě'),
+  (3, 'projekce', 'Projece'),
+  (4, 'kontrola', 'Kontrola'),
+  (5, 'normy', 'Normy'),
+  (6, 'objednavky', 'Objednavky');
 
 
 INSERT INTO `page_text` (`id`, `content`, `page_id`, `identity`) VALUES
   (1, 'Dobrý den šíáýžřčřžýáíáýžř', 1, 'test-content'),
   (2, 'Editace textu', 1, 'popis-auta'),
   (3, 'Pavel popis', 1, 'popis-pavel'),
-  (4, 'Dobrý den, vítejte!', 3, 'wellcome-text'),
+  (4, 'Dobrý den, vítejte!', 1, 'wellcome-text'),
   (5, '<span style=\"color: red\">Samuel Butta</span>\r\n<br>\r\nPavel novotný', 3, 'author-name');
 
 
