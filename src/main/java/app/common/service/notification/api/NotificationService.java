@@ -35,4 +35,12 @@ public interface NotificationService {
      * @return all notifications with new status
      */
     public List<Notification> findNewNotifications();
+
+
+    /**
+     * @return all notifications with new or read
+     */
+    public List<Notification> findActiveNotifications();
+
+
 }

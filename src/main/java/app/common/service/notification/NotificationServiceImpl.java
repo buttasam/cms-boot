@@ -47,4 +47,9 @@ public class NotificationServiceImpl implements NotificationService {
     public List<Notification> findNewNotifications() {
         return notificationRepository.findAllByStatus(NotificationStatus.NEW);
     }
+
+    @Override
+    public List<Notification> findActiveNotifications() {
+        return notificationRepository.findAllByStatusNot(NotificationStatus.DELETED);
+    }
 }
