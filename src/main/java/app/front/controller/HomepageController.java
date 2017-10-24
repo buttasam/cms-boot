@@ -4,17 +4,13 @@ import app.common.service.cms.api.PageService;
 import app.config.anotation.FrontController;
 import app.front.controller.parent.FrontAbstractController;
 import app.persistence.entity.cms.Page;
-import app.persistence.entity.cms.PageText;
 import app.persistence.repository.cms.PageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * @author Samuel Butta
