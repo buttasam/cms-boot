@@ -18,4 +18,8 @@ public class Notification {
 
     @Column
     private String message;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private NotificationStatus status;
 }
