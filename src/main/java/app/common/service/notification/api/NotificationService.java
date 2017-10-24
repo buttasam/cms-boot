@@ -19,16 +19,16 @@ public interface NotificationService {
     /**
      * Notification is marked as read.
      *
-     * @param notification
+     * @param notificationId
      */
-    public void readNotification(Notification notification);
+    public void readNotification(Long notificationId);
 
     /**
      * Delete notification.
      *
-     * @param notification
+     * @param notificationId
      */
-    public void deleteNotification(Notification notification);
+    public void deleteNotification(Long notificationId);
 
 
     /**

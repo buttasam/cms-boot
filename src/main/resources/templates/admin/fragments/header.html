@@ -150,13 +150,13 @@
                                         <span>
                                           <span class="time">3 mins ago</span>
                                         </span>
-                                            <span class="message" th:text="${newNotification.message}">
+                                        <span class="message" th:text="${newNotification.message}">
                                         </span>
                                     </a>
                                 </li>
                                 <li>
                                     <div class="text-center">
-                                        <a>
+                                        <a th:href="@{/admin/notification}">
                                             <strong>Zobrazit všechna upozornění</strong>
                                             <i class="fa fa-angle-right"></i>
                                         </a>

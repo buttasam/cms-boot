@@ -32,13 +32,15 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     @Override
-    public void readNotification(Notification notification) {
+    public void readNotification(Long notificationId) {
+        Notification notification = notificationRepository.findOne(notificationId);
         notification.setStatus(NotificationStatus.READ);
         notificationRepository.save(notification);
     }
 
     @Override
-    public void deleteNotification(Notification notification) {
+    public void deleteNotification(Long notificationId) {
+        Notification notification = notificationRepository.findOne(notificationId);
         notification.setStatus(NotificationStatus.DELETED);
         notificationRepository.save(notification);
     }
