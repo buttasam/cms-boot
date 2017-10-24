@@ -22,4 +22,11 @@ public class Notification {
     @Column
     @Enumerated(EnumType.STRING)
     private NotificationStatus status;
+
+    /**
+     * @return true if status of notification is read
+     */
+    public boolean isRead() {
+        return status.equals(NotificationStatus.READ);
+    }
 }
