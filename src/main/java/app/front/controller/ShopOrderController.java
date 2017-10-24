@@ -1,11 +1,12 @@
 package app.front.controller;
 
+import app.common.service.notification.api.NotificationService;
 import app.config.anotation.FrontController;
 import app.front.controller.parent.FrontAbstractController;
 import app.front.form.OrderForm;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,9 +18,16 @@ import javax.validation.Valid;
  */
 
 @FrontController
-public class OrderController extends FrontAbstractController {
+public class ShopOrderController extends FrontAbstractController {
 
-    Logger LOG = LoggerFactory.getLogger(OrderController.class);
+    private NotificationService notificationService;
+
+    @Autowired
+    public ShopOrderController(NotificationService notificationService) {
+        this.notificationService = notificationService;
+    }
+
+    Logger LOG = LoggerFactory.getLogger(ShopOrderController.class);
 
     @RequestMapping(value = "/objednavka")
     public String order(OrderForm orderForm) {
@@ -34,8 +42,9 @@ public class OrderController extends FrontAbstractController {
         // TODO save to database
 
         // TODO send email
-
+;
         // TODO save to notifications
+        notificationService.notify("new order sended");
 
         return redirect("/objednavka");
     }
