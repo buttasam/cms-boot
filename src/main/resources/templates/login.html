@@ -32,13 +32,13 @@
         <div class="animate form login_form">
             <section class="login_content">
                 <form th:action="@{/login}" method="post">
-                    <h1>Login Form</h1>
+                    <h1>Přihlášení</h1>
 
                     <div th:if="${param.error}">
-                        Invalid username and password.
+                        Neplatné jméno nebo heslo.
                     </div>
                     <div th:if="${param.logout}">
-                        You have been logged out.
+                        Byl jste odhlášen.
                     </div>
 
                     <div>
@@ -48,25 +48,20 @@
                         <input name="password" type="password" class="form-control" placeholder="Password" required=""/>
                     </div>
                     <div>
-                        <input class="btn btn-default submit" type="submit" value="Sign In"/>
-                        <a class="reset_pass" href="#">Lost your password?</a>
+                        <input class="btn btn-default submit" type="submit" value="Přihlásit"/>
+                        <a class="reset_pass" href="#">Zapomenuté heslo?</a>
                     </div>
 
                     <div class="clearfix"></div>
 
                     <div class="separator">
-                        <p class="change_link">New to site?
-                            <a href="#signup" class="to_register"> Create Account </a>
+                        <p class="change_link">
+                            <a href="#signup" class="to_register"> Založit nový účet </a>
                         </p>
 
                         <div class="clearfix"></div>
                         <br/>
 
-                        <div>
-                            <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                            <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and
-                                Terms</p>
-                        </div>
                     </div>
                 </form>
             </section>
@@ -75,7 +70,7 @@
         <div id="register" class="animate form registration_form">
             <section class="login_content">
                 <form>
-                    <h1>Create Account</h1>
+                    <h1>Vytvořit účet</h1>
                     <div>
                         <input type="text" class="form-control" placeholder="Username" required=""/>
                     </div>
@@ -99,11 +94,6 @@
                         <div class="clearfix"></div>
                         <br/>
 
-                        <div>
-                            <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                            <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and
-                                Terms</p>
-                        </div>
                     </div>
                 </form>
             </section>
