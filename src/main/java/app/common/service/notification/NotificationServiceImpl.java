@@ -7,6 +7,8 @@ import app.persistence.repository.message.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author Samuel Butta
  */
@@ -39,5 +41,10 @@ public class NotificationServiceImpl implements NotificationService {
     public void deleteNotification(Notification notification) {
         notification.setStatus(NotificationStatus.DELETED);
         notificationRepository.save(notification);
+    }
+
+    @Override
+    public List<Notification> findNewNotifications() {
+        return notificationRepository.findAllByStatus(NotificationStatus.NEW);
     }
 }

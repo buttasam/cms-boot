@@ -1,6 +1,7 @@
 package app.admin.controller.common;
 
 import app.admin.controller.parent.AdminAbstractController;
+import app.common.service.notification.api.NotificationService;
 import app.config.anotation.AdminController;
 import app.persistence.entity.auth.Role;
 import app.persistence.entity.auth.RoleType;
@@ -27,13 +28,21 @@ public class AdminCommonController extends AdminAbstractController {
 
     private static final Logger LOG = LoggerFactory.getLogger(AdminCommonController.class);
 
+    /**
+     * Repositories
+     */
     private PageRepository pageRepository;
-    private UserRepository userRepository;
+
+
+    /**
+     * Services
+     */
+    private NotificationService notificationService;
 
     @Autowired
-    public AdminCommonController(PageRepository pageRepository, UserRepository userRepository) {
+    public AdminCommonController(PageRepository pageRepository, NotificationService notificationService) {
         this.pageRepository = pageRepository;
-        this.userRepository = userRepository;
+        this.notificationService = notificationService;
     }
 
 
@@ -41,15 +50,9 @@ public class AdminCommonController extends AdminAbstractController {
     public void addCommonAttributes(Model model) {
         LOG.debug("model attribute method was called");
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-
-        String loggedUserEmail = authentication != null ? authentication.getName() : "No user logged in";
-
-        User loggedUser = userRepository.findByEmail(loggedUserEmail);
-
         model.addAttribute("version", "0.2-SNAPSHOT");
         model.addAttribute("pages", pageRepository.findByParentPage(null)); // FIXME add wrapp to service method
-        model.addAttribute("loggedUserName", loggedUserEmail);
+        model.addAttribute("newNotifications", notificationService.findNewNotifications());
     }
 
 }

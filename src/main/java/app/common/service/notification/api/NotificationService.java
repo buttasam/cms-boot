@@ -2,6 +2,8 @@ package app.common.service.notification.api;
 
 import app.persistence.entity.message.Notification;
 
+import java.util.List;
+
 /**
  * @author Samuel Butta
  */
@@ -27,4 +29,10 @@ public interface NotificationService {
      * @param notification
      */
     public void deleteNotification(Notification notification);
+
+
+    /**
+     * @return all notifications with new status
+     */
+    public List<Notification> findNewNotifications();
 }
