@@ -2,6 +2,7 @@ package app.common.service.cms;
 
 import app.admin.form.PageForm;
 import app.admin.form.PageTextForm;
+import app.front.controller.HomepageController;
 import app.persistence.entity.cms.Page;
 import app.persistence.entity.cms.PageText;
 import app.persistence.repository.cms.PageImageRepository;
@@ -12,7 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.NotNull;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @author Samuel Butta
@@ -42,7 +47,7 @@ class PageServiceImpl implements PageService {
         Long parentPageId = pageForm.getParentPageId();
 
         Page parentPage = null;
-        if(parentPageId != null) {
+        if (parentPageId != null) {
             parentPage = pageRepository.getOne(pageForm.getParentPageId());
 
             List<Page> subPages = parentPage.getSubPages();
@@ -76,4 +81,20 @@ class PageServiceImpl implements PageService {
 
         pageTextRepository.save(pageText);
     }
+
+    @Override
+    public Map<String, String> createPageTextsMap(Optional<Page> pageOptional) {
+        Map<String, String> pageTexts = pageOptional
+                .map(this::mapPage)
+                .orElseGet(Collections::emptyMap);
+
+        return pageTexts;
+    }
+
+    private Map<String, String> mapPage(Page page) {
+        return page.getPageTexts()
+                .stream()
+                .collect(Collectors.toMap(PageText::getIdentity, PageText::getContent));
+    }
+
 }

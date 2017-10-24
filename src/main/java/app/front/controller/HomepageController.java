@@ -1,5 +1,6 @@
 package app.front.controller;
 
+import app.common.service.cms.api.PageService;
 import app.config.anotation.FrontController;
 import app.front.controller.parent.FrontAbstractController;
 import app.persistence.entity.cms.Page;
@@ -22,33 +23,27 @@ import java.util.stream.Collectors;
 public class HomepageController extends FrontAbstractController {
 
 
+    /**
+     * Repositories
+     */
     private PageRepository pageRepository;
 
+    /**
+     * Services
+     */
+    private PageService pageService;
+
     @Autowired
-    public HomepageController(PageRepository pageRepository) {
+    public HomepageController(PageRepository pageRepository, PageService pageService) {
         this.pageRepository = pageRepository;
+        this.pageService = pageService;
     }
 
-
-    // TODO remove to service
-    private static Map<String, String> mapPage(Page page) {
-        return page.getPageTexts()
-                .stream()
-                .collect(Collectors.toMap(PageText::getIdentity, PageText::getContent));
-    }
 
     @RequestMapping("/")
-    public String greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name,
-                           Model model) {
-
-        Optional<Page> page = pageRepository.getByUrl("homepage");
-
-        Map<String, String> pageTexts =
-                page.map(HomepageController::mapPage)
-                        .orElseGet(Collections::emptyMap);
-
-        model.addAttribute("name", name);
-        model.addAttribute("page", page);
+    public String index(Model model) {
+        Optional<Page> pageOpt = pageRepository.getByUrl("homepage");
+        Map<String, String> pageTexts = pageService.createPageTextsMap(pageOpt);
         model.addAttribute("pageTexts", pageTexts);
 
         return "front/index";
