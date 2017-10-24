@@ -71,7 +71,7 @@ class PageServiceImpl implements PageService {
 
     @Override
     public void updatePageText(@NotNull String identity, @NotNull String content) {
-        PageText pageText = pageTextRepository.findByIdentity(identity);
+        PageText pageText = pageTextRepository.findByIdentity(identity).orElse(null);
         pageText.setContent(content);
 
         pageTextRepository.save(pageText);
