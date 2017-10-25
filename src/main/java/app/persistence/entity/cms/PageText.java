@@ -24,4 +24,8 @@ public class PageText {
 
     @ManyToOne
     private Page page;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private PageTextType type;
 }
