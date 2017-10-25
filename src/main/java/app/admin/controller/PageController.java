@@ -109,8 +109,6 @@ public class PageController extends AdminAbstractController {
 
     @RequestMapping(value = "/page/{url}")
     public String renderPage(@PathVariable("url") String url, Model model) {
-
-        // TODO osetrit pokud neexistuje
         Optional<Page> pageOptional = pageRepository.getByUrl(url);
 
         if (pageOptional.isPresent()) {
@@ -119,20 +117,13 @@ public class PageController extends AdminAbstractController {
             PageTextForm pageTextForm = new PageTextForm();
             pageTextForm.setPageId(page.getId());
 
-            List<PageTextForm> pageTextEditForms = page.getPageTexts()
-                    .stream()
-                    .map(p -> PageTextForm.builder()
-                            .identity(p.getIdentity())
-                            .content(p.getContent())
-                            .pageId(p.getPage().getId())
-                            .build())
-                    .collect(Collectors.toList());
-
             model.addAttribute("page", pageOptional.get());
             model.addAttribute("pageTextForm", pageTextForm);
 
+            return "admin/page";
+        } else {
+            return redirect("/admin/dashboard");
         }
-        return "admin/page";
     }
 
 
