@@ -16,6 +16,7 @@ public class PageText {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Lob
     @Column
     private String content;
 

@@ -62,7 +62,8 @@
                             <div class="ln_solid"></div>
 
                             <div sec:authorize="hasRole('DEVELOPER')" class="col-md-6 col-sm-6 col-xs-12">
-                                <a class="btn btn-warning" th:href="@{/admin/addPage(parentPageId=${page.id})}">Přidat podstránku</a>
+                                <a class="btn btn-warning" th:href="@{/admin/addPage(parentPageId=${page.id})}">Přidat
+                                    podstránku</a>
                             </div>
                         </div>
                     </div>
@@ -208,7 +209,7 @@
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <textarea th:text="${pageTextEdit.content}" name="content" required="required"
-                                                  class="form-control col-md-7 col-xs-12">
+                                                  class="form-control col-md-7 col-xs-12 ckeditor">
                                         </textarea>
 
                                     </div>
@@ -293,6 +294,13 @@
 </div>
 
 <div th:replace="admin/fragments/footer :: footer-scripts"></div>
+
+<script>
+    $(function () {
+        CKEDITOR.replace('ckeditor');
+    });
+</script>
+
 
 </body>
 </html>
