@@ -10,12 +10,12 @@ INSERT INTO `page` (`id`, `url`, `title`) VALUES
   (6, 'objednavky', 'Objednavky');
 
 
-INSERT INTO `page_text` (`id`, `content`, `page_id`, `identity`) VALUES
-  (1, 'Dobrý den šíáýžřčřžýáíáýžř', 1, 'test-content'),
-  (2, 'Editace textu', 1, 'popis-auta'),
-  (3, 'Pavel popis', 1, 'popis-pavel'),
-  (4, 'Dobrý den, vítejte!', 1, 'wellcome-text'),
-  (5, '<span style=\"color: red\">Samuel Butta</span>\r\n<br>\r\nPavel novotný', 3, 'author-name');
+INSERT INTO `page_text` (`id`, `content`, `page_id`, `identity`, `type`) VALUES
+  (1, 'Dobrý den šíáýžřčřžýáíáýžř', 1, 'test-content', 'TEXT_BOX'),
+  (2, 'Editace textu', 1, 'popis-auta', 'CK_EDITOR'),
+  (3, 'Pavel popis', 1, 'popis-pavel', 'CK_EDITOR'),
+  (4, 'Dobrý den, vítejte!', 1, 'wellcome-text', 'TEXT_BOX'),
+  (5, '<span style=\"color: red\">Samuel Butta</span>\r\n<br>\r\nPavel novotný', 3, 'author-name', 'TEXT_BOX');
 
 
 INSERT INTO `product_category` (`id`, `name`, `parent_category_id`) VALUES

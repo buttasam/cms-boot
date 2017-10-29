@@ -69,6 +69,7 @@ class PageServiceImpl implements PageService {
 
         pageText.setIdentity(pageTextForm.getIdentity());
         pageText.setContent(pageTextForm.getContent());
+        pageText.setType(pageTextForm.getType());
         pageText.setPage(page);
 
         pageTextRepository.save(pageText);

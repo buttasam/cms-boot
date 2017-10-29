@@ -87,14 +87,16 @@ public class PageController extends AdminAbstractController {
 
     @PreAuthorize("hasRole('DEVELOPER')")
     @PostMapping("/page/addPageText")
-    public String pageTextForm(@Valid PageTextForm pageTextForm, BindingResult bindingResult, Model model) {
+    public String pageTextForm(@Valid PageTextForm pageTextForm, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
+        Page page = pageRepository.getOne(pageTextForm.getPageId());
         if (bindingResult.hasErrors() || !pageTextValidator.isAddPageTextValid(pageTextForm)) {
-            model.addAttribute("page", pageRepository.getOne(pageTextForm.getPageId()));
+            model.addAttribute("page",page);
             return "admin/page";
         }
         pageService.savePageText(pageTextForm);
 
-        return redirect("/admin/addPage");
+        redirectAttributes.addAttribute("pageUrl", page.getUrl());
+        return redirect("/admin/page/{pageUrl}");
     }
 
     @PostMapping("/page/editPageText")

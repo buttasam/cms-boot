@@ -13,7 +13,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 text-center">
-            <h1 class="mt-5" th:text="${pageTexts.get('wellcome-text')}">A Bootstrap 4 Starter Template</h1>
+            <h1 class="mt-5" th:utext="${pageTexts.get('wellcome-text')}"></h1>
             <ul sec:authorize="isAuthenticated()" class="list-unstyled">
                 <li sec:authentication="name"></li>
                 <li sec:authentication="principal.authorities"></li>

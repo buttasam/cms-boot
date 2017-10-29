@@ -29,4 +29,12 @@ public class PageText {
     @Column
     @Enumerated(EnumType.STRING)
     private PageTextType type;
+
+    public boolean isCKEditor() {
+        return type != null && type.equals(PageTextType.CK_EDITOR);
+    }
+
+    public boolean isTextBox() {
+        return type != null && type.equals(PageTextType.TEXT_BOX);
+    }
 }
