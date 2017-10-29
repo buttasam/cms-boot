@@ -20,6 +20,7 @@ public class PageTextForm {
     @NotNull
     private String identity;
 
+    @NotNull
     private String content;
 
     @NotNull
