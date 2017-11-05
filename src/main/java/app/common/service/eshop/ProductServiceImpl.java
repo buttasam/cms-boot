@@ -7,6 +7,8 @@ import app.persistence.repository.eshop.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 /**
  * @author Samuel Butta
  */
@@ -24,7 +26,9 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void saveProduct(ProductForm productForm) {
-        Product product = new Product();
+        Optional<Product> productOpt = productRepository.getById(productForm.getProductId());
+        Product product = productOpt.orElse(new Product());
+
         product.setTitle(productForm.getTitle());
         product.setPerex(productForm.getPerex());
         product.setPriceWithVat(productForm.getPriceWithVat());

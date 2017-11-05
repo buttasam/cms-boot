@@ -1,12 +1,17 @@
 package app.admin.form;
 
 
+import lombok.Data;
+
 import javax.validation.constraints.NotNull;
 
 /**
  * @author Samuel Butta
  */
+@Data
 public class ProductForm {
+
+    private Long productId;
 
     private String title;
 
@@ -18,45 +23,4 @@ public class ProductForm {
     @NotNull
     private Double priceWithoutVat;
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getPerex() {
-        return perex;
-    }
-
-    public void setPerex(String perex) {
-        this.perex = perex;
-    }
-
-    public Double getPriceWithVat() {
-        return priceWithVat;
-    }
-
-    public void setPriceWithVat(Double priceWithVat) {
-        this.priceWithVat = priceWithVat;
-    }
-
-    public Double getPriceWithoutVat() {
-        return priceWithoutVat;
-    }
-
-    public void setPriceWithoutVat(Double priceWithoutVat) {
-        this.priceWithoutVat = priceWithoutVat;
-    }
-
-    @Override
-    public String toString() {
-        return "ProductForm{" +
-                "title='" + title + '\'' +
-                ", perex='" + perex + '\'' +
-                ", priceWithVat=" + priceWithVat +
-                ", priceWithoutVat=" + priceWithoutVat +
-                '}';
-    }
 }

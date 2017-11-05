@@ -5,14 +5,17 @@ import app.admin.controller.parent.AdminAbstractController;
 import app.admin.form.ProductForm;
 import app.common.service.eshop.api.ProductService;
 import app.config.anotation.AdminController;
+import app.persistence.entity.eshop.Product;
 import app.persistence.repository.eshop.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 /**
  * @author Samuel Butta
@@ -43,7 +46,16 @@ public class ProductController extends AdminAbstractController {
 
 
     @RequestMapping("/addProduct")
-    public String addProduct(ProductForm productForm, Model model) {
+    public String addProduct(@RequestParam(required = false) Long productId, ProductForm productForm, Model model) {
+        Optional<Product> productOpt = productRepository.getById(productId);
+
+        productOpt.ifPresent(p -> {
+            productForm.setPerex(p.getPerex());
+            productForm.setPriceWithoutVat(p.getPriceWithoutVat());
+            productForm.setPriceWithVat(p.getPriceWithVat());
+            productForm.setTitle(p.getTitle());
+        });
+
         return "admin/addProduct";
     }
 
@@ -51,11 +63,11 @@ public class ProductController extends AdminAbstractController {
     @PostMapping("/addProduct")
     public String productForm(@Valid ProductForm productForm, BindingResult bindingResult) {
 
-        if(!bindingResult.hasErrors()) {
+        if (!bindingResult.hasErrors()) {
             productService.saveProduct(productForm);
         }
 
-        return redirect("admin/product/all");
+        return redirect("/admin/product/all");
     }
 
 }

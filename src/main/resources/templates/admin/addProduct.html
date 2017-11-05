@@ -27,7 +27,7 @@
                         </div>
                         <div class="x_content">
                             <br/>
-                            <form th:action="@{/admin/product/addProduct}" th:object="${productForm}" method="post" id="demo-form2"
+                            <form th:action="@{/admin/product/addProduct}" th:object="${productForm}" method="post"
                                   data-parsley-validate="" class="form-horizontal form-label-left"
                                   novalidate="">
 
@@ -70,6 +70,8 @@
                                                class="form-control col-md-7 col-xs-12"/>
                                     </div>
                                 </div>
+
+                                <input type="hidden" th:field="*{productId}"/>
 
                                 <div class="ln_solid"></div>
                                 <div class="form-group">
