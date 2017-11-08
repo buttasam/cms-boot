@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <title>Gentelella Alela! | </title>
+    <title>CMS Boot | Administration </title>
 
     <!-- Bootstrap -->
     <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
@@ -41,7 +41,7 @@
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
                     <a th:href="@{/admin/dashboard}" class="site_title"><i class="fa fa-user"></i>
-                        <span>Administrace</span></a>
+                        <span>Administration</span></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -53,12 +53,12 @@
                     <div class="menu_section">
                         <h3>Obsah</h3>
                         <ul class="nav side-menu">
-                            <li><a><i class="fa fa-home"></i> Domů <span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a th:href="@{/admin/dashboard}">Přehled</a></li>
+                                    <li><a th:href="@{/admin/dashboard}">Dashboard</a></li>
                                 </ul>
                             </li>
-                            <li><a><i class="fa fa-edit"></i> Obsah stránek <span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-edit"></i> Sites content <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
                                     <li th:each="page : ${pages}">
                                         <a th:href="@{/admin/page/} + ${page.url}" th:text="${page.title}"></a>
@@ -72,31 +72,30 @@
                     <div class="menu_section">
                         <h3>E-shop</h3>
                         <ul class="nav side-menu">
-                            <li><a><i class="fa fa-bug"></i> Kategorie <span
+                            <li><a><i class="fa fa-shopping-basket"></i> Categories <span
                                     class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a th:href="@{/admin/shop/productCategory}">Seznam kategorií</a></li>
+                                    <li><a th:href="@{/admin/shop/productCategory}">List</a></li>
                                 </ul>
                             </li>
                         </ul>
                         <ul class="nav side-menu">
-                            <li><a><i class="fa fa-bug"></i> Produkty <span
+                            <li><a><i class="fa fa-cube"></i> Products <span
                                     class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a th:href="@{/admin/product/all}">Seznam produktů</a></li>
-                                    <li><a th:href="@{/admin/product/addProduct}">Přidat produkt</a></li>
+                                    <li><a th:href="@{/admin/product/all}">List</a></li>
+                                    <li><a th:href="@{/admin/product/addProduct}">Add product</a></li>
                                 </ul>
                             </li>
                         </ul>
                     </div>
                     <div class="menu_section">
-                        <h3>Správa</h3>
+                        <h3>Other</h3>
                         <ul class="nav side-menu">
-                            <li><a><i class="fa fa-bug"></i> Additional Pages <span
+                            <li><a><i class="fa fa-desktop"></i> System <span
                                     class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a th:href="@{/admin/notification}">Notifikace</a></li>
-                                    <li><a href="projects.html">Zprávy</a></li>
+                                    <li><a th:href="@{/admin/notification}">Notifications</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -125,18 +124,15 @@
                                 <span class=" fa fa-angle-down"></span>
                             </a>
                             <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="javascript:;"> Profile</a></li>
+                                <li><a th:href="@{/}" target="_blank"> Show website</a></li>
                                 <li>
-                                    <a href="javascript:;">
-                                        <span class="badge bg-red pull-right">50%</span>
-                                        <span>Settings</span>
-                                    </a>
-                                </li>
-                                <li><a href="javascript:;">Help</a></li>
-                                <li>
-                                    <form th:action="@{/logout}" method="post">
-                                        <input type="submit" value="Odshlásit se" class="btn btn-success pull-right"/>
-                                    </form>
+                                    <div class="text-center">
+
+                                        <form th:action="@{/logout}" method="post">
+                                            <input type="submit" value="Logout" class="btn btn-success"/>
+                                        </form>
+
+                                    </div>
                                 </li>
                             </ul>
                         </li>
@@ -160,7 +156,7 @@
                                 <li>
                                     <div class="text-center">
                                         <a th:href="@{/admin/notification}">
-                                            <strong>Zobrazit všechna upozornění</strong>
+                                            <strong>Show all notifications</strong>
                                             <i class="fa fa-angle-right"></i>
                                         </a>
                                     </div>
