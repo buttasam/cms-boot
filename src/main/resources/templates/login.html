@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-    <title>Gentelella Alela! | </title>
+    <title>Cms boot - login</title>
 
     <!-- Bootstrap -->
     <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
@@ -32,13 +32,13 @@
         <div class="animate form login_form">
             <section class="login_content">
                 <form th:action="@{/login}" method="post">
-                    <h1>Přihlášení</h1>
+                    <h1>Login</h1>
 
                     <div th:if="${param.error}">
-                        Neplatné jméno nebo heslo.
+                        Invalid name or password.
                     </div>
                     <div th:if="${param.logout}">
-                        Byl jste odhlášen.
+                        You have been logged out.
                     </div>
 
                     <div>
@@ -48,15 +48,15 @@
                         <input name="password" type="password" class="form-control" placeholder="Password" required=""/>
                     </div>
                     <div>
-                        <input class="btn btn-default submit" type="submit" value="Přihlásit"/>
-                        <a class="reset_pass" href="#">Zapomenuté heslo?</a>
+                        <input class="btn btn-default submit center" type="submit" value="Přihlásit"/>
+                        <a class="reset_pass" href="#">Forgotten password?</a>
                     </div>
 
                     <div class="clearfix"></div>
 
                     <div class="separator">
                         <p class="change_link">
-                            <a href="#signup" class="to_register"> Založit nový účet </a>
+                            <a href="#signup" class="to_register"> Create new account </a>
                         </p>
 
                         <div class="clearfix"></div>
@@ -70,7 +70,7 @@
         <div id="register" class="animate form registration_form">
             <section class="login_content">
                 <form>
-                    <h1>Vytvořit účet</h1>
+                    <h1>Create new account</h1>
                     <div>
                         <input type="text" class="form-control" placeholder="Username" required=""/>
                     </div>
@@ -81,7 +81,10 @@
                         <input type="password" class="form-control" placeholder="Password" required=""/>
                     </div>
                     <div>
-                        <a class="btn btn-default submit" href="index.html">Submit</a>
+                        <input type="password" class="form-control" placeholder="Password confirm" required=""/>
+                    </div>
+                    <div>
+                        <a class="btn btn-default submit" href="index.html">Create</a>
                     </div>
 
                     <div class="clearfix"></div>
