@@ -22,11 +22,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * @author Samuel Butta
@@ -102,7 +99,7 @@ public class PageController extends AdminAbstractController {
     @PostMapping("/page/editPageText")
     public String pageTextEditForm(@RequestParam String content, @RequestParam String identity, @RequestParam Long pageId, RedirectAttributes redirectAttributes) {
         pageService.updatePageText(identity, content);
-        Page page = pageRepository.findOne(pageId);
+        Page page = pageRepository.getOne(pageId);
 
         redirectAttributes.addAttribute("pageUrl", page.getUrl());
         return redirect("/admin/page/{pageUrl}");
@@ -134,7 +131,7 @@ public class PageController extends AdminAbstractController {
                                @RequestParam("identity") String identity,
                                @RequestParam("pageId") Long pageId,
                                RedirectAttributes redirectAttributes) {
-        Page page = pageRepository.findOne(pageId);
+        Page page = pageRepository.getOne(pageId);
         storageService.store(file, identity, page);
 
         redirectAttributes.addAttribute("pageUrl", page.getUrl());

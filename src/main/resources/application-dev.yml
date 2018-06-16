@@ -4,7 +4,7 @@ spring:
     url: jdbc:h2:mem:mymemdb;MODE=MySQL
     username: sa
     password: test
-    initialize: true
+    initialization-mode: always
 
 upload:
   work-dir: work
