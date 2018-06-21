@@ -2,21 +2,14 @@ SET NAMES utf8;
 SET foreign_key_checks = 0;
 
 INSERT INTO `page` (`id`, `url`, `title`) VALUES
-  (1, 'homepage', 'Domovská stránka'),
-  (2, 'o-firme', 'O firmě'),
-  (3, 'projekce', 'Projece'),
-  (4, 'kontrola', 'Kontrola'),
-  (5, 'normy', 'Normy'),
-  (6, 'objednavky', 'Objednavky');
+  (1, 'homepage', 'Homepage'),
+  (2, 'about', 'About'),
+  (3, 'contacts', 'Contacts');
 
 
 INSERT INTO `page_text` (`id`, `content`, `page_id`, `identity`, `type`) VALUES
-  (1, 'Dobrý den šíáýžřčřžýáíáýžř', 1, 'test-content', 'TEXT_BOX'),
-  (2, 'Editace textu', 1, 'popis-auta', 'CK_EDITOR'),
-  (3, 'Pavel popis', 1, 'popis-pavel', 'CK_EDITOR'),
-  (4, 'Dobrý den, vítejte!', 1, 'wellcome-text', 'TEXT_BOX'),
-  (5, '<span style=\"color: red\">Samuel Butta</span>\r\n<br>\r\nPavel novotný', 3, 'author-name', 'TEXT_BOX');
-
+  (1, 'Wellcome text', 1, 'wellcome-text', 'TEXT_BOX'),
+  (2, 'Homepage text', 1, 'homepage-text', 'CK_EDITOR');
 
 INSERT INTO `product_category` (`id`, `name`, `parent_category_id`) VALUES
   (5, 'parent', NULL),
@@ -35,7 +28,7 @@ INSERT INTO `role` (`id`, `role`) VALUES
 
 INSERT INTO `user` (`id`, `active`, `email`, `first_name`, `last_name`, `password`) VALUES
   (1, 1, 'developer@admin.cz', 'Joe', 'Doe', '$2a$10$cIZhwKsIsM9kv6guM.iQnOCNKIfIaGSEkrJ7OSU2.02hmtAHAbCou'),
-  (2, 1, 'admin@admin.cz', 'Joe', 'Doe', '$2a$10$cIZhwKsIsM9kv6guM.iQnOCNKIfIaGSEkrJ7OSU2.02hmtAHAbCou');
+  (2, 1, 'admin@admin.cz', 'Joe', 'Doe', '$2a$10$Jg/n0bwaYZxJBhTPVhWuDO989e3xmLbUPnB/IXNde/LfbCHjPPt8.');
 
 INSERT INTO `user_roles` (`user_id`, `roles_id`) VALUES
   (1, 1),

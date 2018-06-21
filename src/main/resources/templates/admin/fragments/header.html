@@ -72,14 +72,6 @@
                     <div class="menu_section">
                         <h3>E-shop</h3>
                         <ul class="nav side-menu">
-                            <li><a><i class="fa fa-shopping-basket"></i> Categories <span
-                                    class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a th:href="@{/admin/shop/productCategory}">List</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <ul class="nav side-menu">
                             <li><a><i class="fa fa-cube"></i> Products <span
                                     class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
@@ -146,9 +138,6 @@
                             <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                                 <li th:each="newNotification : ${newNotifications}">
                                     <a>
-                                        <span>
-                                          <span class="time">3 mins ago</span>
-                                        </span>
                                         <span class="message" th:text="${newNotification.message}">
                                         </span>
                                     </a>
