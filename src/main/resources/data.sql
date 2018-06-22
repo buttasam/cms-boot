@@ -9,17 +9,10 @@ INSERT INTO `page` (`id`, `url`, `title`) VALUES
 
 INSERT INTO `page_text` (`id`, `content`, `page_id`, `identity`, `type`) VALUES
   (1, 'Wellcome text', 1, 'wellcome-text', 'TEXT_BOX'),
-  (2, 'Homepage text', 1, 'homepage-text', 'CK_EDITOR');
+  (2, 'Homepage text', 1, 'homepage-text', 'CK_EDITOR'),
+  (3, 'About text', 1, 'about-text', 'CK_EDITOR'),
+  (4, 'Contact text', 2, 'contact-text', 'CK_EDITOR');
 
-INSERT INTO `product_category` (`id`, `name`, `parent_category_id`) VALUES
-  (5, 'parent', NULL),
-  (6, 'kategorie 1', 5),
-  (7, 'parent', NULL),
-  (8, 'kategorie 1', 7),
-  (9, 'parent', NULL),
-  (10, 'kategorie 1', 9),
-  (11, 'parent', NULL),
-  (12, 'kategorie 1', 11);
 
 INSERT INTO `role` (`id`, `role`) VALUES
   (1, 'ROLE_USER'),

@@ -33,10 +33,5 @@ public class Product {
     @Column
     private String description;
 
-    @OneToMany(mappedBy = "product")
-    private List<ProductImage> productImages = new ArrayList<>();
-
-    @ManyToMany(mappedBy = "products", cascade = CascadeType.ALL)
-    private List<ProductCategory> productCategories = new ArrayList<>();
 
 }
