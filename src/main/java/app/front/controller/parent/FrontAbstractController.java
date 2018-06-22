@@ -23,10 +23,14 @@ public class FrontAbstractController extends AbstractController {
     protected PageService pageService;
 
 
-    public void addPageTexts(Model model, String pageIdentity) {
+    public void addPageData(Model model, String pageIdentity) {
         Optional<Page> pageOpt = pageRepository.getByUrl(pageIdentity);
         Map<String, String> pageTexts = pageService.createPageTextsMap(pageOpt);
+        Map<String, String> pageImages = pageService.createPageImagesMap(pageOpt);
+
+
         model.addAttribute("pageTexts", pageTexts);
+        model.addAttribute("pageImages", pageImages);
     }
 
 }

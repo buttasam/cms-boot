@@ -28,4 +28,6 @@ public interface PageService {
      * @return map of identity and pageText
      */
     Map<String, String> createPageTextsMap(Optional<Page> pageOptional);
+
+    Map<String,String> createPageImagesMap(Optional<Page> pageOpt);
 }

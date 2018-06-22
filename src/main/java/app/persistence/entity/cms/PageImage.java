@@ -1,6 +1,5 @@
 package app.persistence.entity.cms;
 
-import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;

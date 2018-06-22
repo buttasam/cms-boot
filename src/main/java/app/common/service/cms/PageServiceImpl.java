@@ -2,13 +2,13 @@ package app.common.service.cms;
 
 import app.admin.form.PageForm;
 import app.admin.form.PageTextForm;
-import app.front.controller.HomepageController;
+import app.common.service.cms.api.PageService;
 import app.persistence.entity.cms.Page;
+import app.persistence.entity.cms.PageImage;
 import app.persistence.entity.cms.PageText;
 import app.persistence.repository.cms.PageImageRepository;
 import app.persistence.repository.cms.PageRepository;
 import app.persistence.repository.cms.PageTextRepository;
-import app.common.service.cms.api.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -92,10 +92,25 @@ class PageServiceImpl implements PageService {
         return pageTexts;
     }
 
+    @Override
+    public Map<String, String> createPageImagesMap(Optional<Page> pageOpt) {
+        Map<String, String> pageImages = pageOpt
+                .map(this::mapPageImage)
+                .orElseGet(Collections::emptyMap);
+
+        return pageImages;
+    }
+
     private Map<String, String> mapPage(Page page) {
         return page.getPageTexts()
                 .stream()
                 .collect(Collectors.toMap(PageText::getIdentity, PageText::getContent));
+    }
+
+    private Map<String, String> mapPageImage(Page page) {
+        return page.getPageImages()
+                .stream()
+                .collect(Collectors.toMap(PageImage::getIdentity, PageImage::getFileName));
     }
 
 }

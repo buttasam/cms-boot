@@ -14,7 +14,7 @@ public class HomepageController extends FrontAbstractController {
 
     @RequestMapping("/")
     public String index(Model model) {
-        addPageTexts(model, "homepage");
+        addPageData(model, "homepage");
 
         return "front/index";
     }
