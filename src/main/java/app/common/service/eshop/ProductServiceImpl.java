@@ -7,6 +7,7 @@ import app.persistence.repository.eshop.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -35,6 +36,11 @@ public class ProductServiceImpl implements ProductService {
         product.setPriceWithoutVat(productForm.getPriceWithoutVat());
 
         productRepository.save(product);
+    }
+
+    @Override
+    public List<Product> findAllProducts() {
+        return productRepository.findAll();
     }
 
 }

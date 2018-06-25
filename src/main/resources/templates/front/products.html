@@ -15,6 +15,21 @@
         <div class="col-lg-12 text-center">
             <h1 class="mt-5">Products</h1>
 
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th>Product name</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.title}"></td>
+                    <td th:text="${product.priceWithVat}"></td>
+                </tr>
+                </tbody>
+            </table>
+
         </div>
     </div>
 </div>
