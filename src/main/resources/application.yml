@@ -2,7 +2,7 @@ spring:
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
         password: root
-        url: jdbc:mysql://localhost/cms_boot?useUnicode=yes&characterEncoding=UTF-8
+        url: jdbc:mysql://localhost/cms-boot?useUnicode=yes&characterEncoding=UTF-8
         username: root
         initialization-mode: never
     http:
@@ -13,6 +13,7 @@ spring:
     jpa:
         hibernate:
             ddl-auto: update
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     queries:
         roles-query: SELECT u.email, r.role from user u inner join user_roles ur on(u.id=ur.user_id) inner join role r on(ur.roles_id=r.id) where u.email=?;
         users-query: SELECT email, password, active FROM user where email=?;

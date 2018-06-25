@@ -1,0 +1,8 @@
+spring:
+    datasource:
+        url: jdbc:mysql://localhost/cms-boot?useUnicode=yes&characterEncoding=UTF-8
+        password: root
+        username: root
+
+upload:
+  work-dir: work
