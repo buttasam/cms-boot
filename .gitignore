@@ -5,3 +5,4 @@ build
 out
 work/*/*
 !work/image/test.png
+!work/image/dummy1.png

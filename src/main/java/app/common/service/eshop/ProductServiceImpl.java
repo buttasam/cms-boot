@@ -31,9 +31,7 @@ public class ProductServiceImpl implements ProductService {
         Product product = productOpt.orElse(new Product());
 
         product.setTitle(productForm.getTitle());
-        product.setPerex(productForm.getPerex());
-        product.setPriceWithVat(productForm.getPriceWithVat());
-        product.setPriceWithoutVat(productForm.getPriceWithoutVat());
+        product.setPrice(productForm.getPrice());
 
         productRepository.save(product);
     }

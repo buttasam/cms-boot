@@ -15,6 +15,10 @@
         <div class="col-lg-12 text-center">
             <h1 class="mt-5">About us</h1>
             <p th:utext="${pageTexts.get('about-text')}"></p>
+
+            <image th:src="@{/file/} + ${pageImages.get('about-image')}"></image>
+
+
         </div>
     </div>
 </div>

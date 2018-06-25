@@ -19,19 +19,9 @@ public class Product {
     private Long id;
 
     @Column
-    private Double priceWithVat;
-
-    @Column
-    private Double priceWithoutVat;
+    private Double price;
 
     @Column
     private String title;
-
-    @Column
-    private String perex;
-
-    @Column
-    private String description;
-
 
 }

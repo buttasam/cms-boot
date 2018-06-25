@@ -50,9 +50,7 @@ public class ProductController extends AdminAbstractController {
         Optional<Product> productOpt = productRepository.getById(productId);
 
         productOpt.ifPresent(p -> {
-            productForm.setPerex(p.getPerex());
-            productForm.setPriceWithoutVat(p.getPriceWithoutVat());
-            productForm.setPriceWithVat(p.getPriceWithVat());
+            productForm.setPrice(p.getPrice());
             productForm.setTitle(p.getTitle());
         });
 

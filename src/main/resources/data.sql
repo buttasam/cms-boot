@@ -13,6 +13,14 @@ INSERT INTO `page_text` (`id`, `content`, `page_id`, `identity`, `type`) VALUES
   (3, 'About text', 2, 'about-text', 'CK_EDITOR'),
   (4, 'Contacts text', 3, 'contacts-text', 'CK_EDITOR');
 
+INSERT INTO `page_image` (`id`, `file_name`, `identity`, `path`, `page_id`) VALUES
+(1,	'dummy1.png',	'about-image',	NULL,	2);
+
+
+INSERT INTO `product` (`id`, `price`, `title`) VALUES
+(1,	129,	'Product1'),
+(2,	299,	'Product2');
+
 
 INSERT INTO `role` (`id`, `role`) VALUES
   (1, 'ROLE_USER'),

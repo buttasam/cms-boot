@@ -15,12 +15,8 @@ public class ProductForm {
 
     private String title;
 
-    private String perex;
-
     @NotNull
-    private Double priceWithVat;
+    private Double price;
 
-    @NotNull
-    private Double priceWithoutVat;
 
 }
