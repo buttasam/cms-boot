@@ -6,3 +6,4 @@ out
 work/*/*
 !work/image/test.png
 !work/image/dummy1.png
+src/main/resources/application-local.yml
