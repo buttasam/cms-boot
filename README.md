@@ -3,7 +3,7 @@ CMS based on [Spring Boot](https://spring.io/projects/spring-boot).
 
 The aim is to create relative small, flexible and extendable content management system based pure on Spring Boot and SQL database.
 
-It is an alternative to complex solutions such as Liferay, which are quite hart to understand.
+It is an alternative to complex solutions such as Liferay, which are quite hard to understand.
 
 ## Architecture
 
