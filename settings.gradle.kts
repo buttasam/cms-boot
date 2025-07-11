@@ -1,4 +1,4 @@
-rootProject.name = "demo"
+rootProject.name = "cms-boot"
 
 pluginManagement {
     repositories {

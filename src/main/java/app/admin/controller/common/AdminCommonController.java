@@ -43,8 +43,8 @@ public class AdminCommonController extends AdminAbstractController {
     public void addCommonAttributes(Model model) {
         LOG.debug("model attribute method was called");
 
-        model.addAttribute("version", "0.2-SNAPSHOT");
-        model.addAttribute("pages", pageRepository.findByParentPage(null)); // FIXME add wrapp to service method
+        model.addAttribute("version", "0.3-SNAPSHOT");
+        model.addAttribute("pages", pageRepository.findByParentPage(null));
         model.addAttribute("newNotifications", notificationService.findNewNotifications());
     }
 
