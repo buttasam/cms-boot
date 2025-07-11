@@ -9,10 +9,10 @@ import app.persistence.entity.cms.PageText;
 import app.persistence.repository.cms.PageImageRepository;
 import app.persistence.repository.cms.PageRepository;
 import app.persistence.repository.cms.PageTextRepository;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.validation.constraints.NotNull;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;

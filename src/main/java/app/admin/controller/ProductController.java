@@ -7,6 +7,7 @@ import app.common.service.eshop.api.ProductService;
 import app.config.anotation.AdminController;
 import app.persistence.entity.eshop.Product;
 import app.persistence.repository.eshop.ProductRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.validation.Valid;
 import java.util.Optional;
 
 /**
@@ -47,7 +47,7 @@ public class ProductController extends AdminAbstractController {
 
     @RequestMapping("/addProduct")
     public String addProduct(@RequestParam(required = false) Long productId, ProductForm productForm, Model model) {
-        Optional<Product> productOpt = productRepository.getById(productId);
+        Optional<Product> productOpt = Optional.ofNullable(productForm.getProductId()).map(productRepository::getById);
 
         productOpt.ifPresent(p -> {
             productForm.setPrice(p.getPrice());

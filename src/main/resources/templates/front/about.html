@@ -1,27 +1,24 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head th:replace="front/fragments/header :: head">
+<head th:replace="~{front/fragments/header :: head}">
 </head>
 
+
+<div th:replace="~{front/fragments/header :: main-menu}"></div>
+
 <body>
+<section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-center text-center">
+        <p class="mt-20" th:utext="${pageTexts.get('about-text')}">
+        </p>
 
-<!-- main menu -->
-<div th:replace="front/fragments/header :: main-menu"></div>
-<!-- /main menu -->
-
-<!-- Page Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <h1 class="mt-5">About us</h1>
-            <p th:utext="${pageTexts.get('about-text')}"></p>
-
-            <image th:src="@{/file/} + ${pageImages.get('about-image')}"></image>
-
-
-        </div>
+        <img
+                class="mt-8 w-full max-w-3xl rounded-lg shadow-lg"
+                th:src="@{/file/} + ${pageImages.get('about-image')}"
+                alt="About us"
+        />
     </div>
-</div>
+</section>
 
 </body>
 </html>

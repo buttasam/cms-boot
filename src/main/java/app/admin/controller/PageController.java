@@ -11,6 +11,7 @@ import app.config.anotation.AdminController;
 import app.persistence.entity.cms.Page;
 import app.persistence.repository.cms.PageRepository;
 import app.persistence.repository.cms.PageTextRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
@@ -22,7 +23,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.Valid;
 import java.util.Optional;
 
 /**

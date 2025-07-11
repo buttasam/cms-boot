@@ -1,32 +1,28 @@
 package app.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
 import javax.sql.DataSource;
 
-/**
- * Zakladni konfiguracni trida Spring Sucurity.
- *
- * @author Samuel Butta
- */
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+@EnableMethodSecurity(prePostEnabled = true) // novější náhrada za @EnableGlobalMethodSecurity
+public class WebSecurityConfig {
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
-
-    @Autowired
-    private DataSource dataSource;
+    private final DataSource dataSource;
+    private final BCryptPasswordEncoder passwordEncoder;
 
     @Value("${spring.queries.users-query}")
     private String usersQuery;
@@ -34,29 +30,52 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .mvcMatchers("/admin/css/**").permitAll()
-                .mvcMatchers("/admin/js/**").permitAll()
-                .mvcMatchers("/admin/**").authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();
+    public WebSecurityConfig(DataSource dataSource, BCryptPasswordEncoder passwordEncoder) {
+        this.dataSource = dataSource;
+        this.passwordEncoder = passwordEncoder;
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.
-                jdbcAuthentication()
-                .usersByUsernameQuery(usersQuery)
-                .authoritiesByUsernameQuery(rolesQuery)
-                .dataSource(dataSource)
-                .passwordEncoder(passwordEncoder);
+    // FIXME
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .authorizeHttpRequests(authz -> authz
+                        .requestMatchers("/h2-console/**").permitAll()
+                        .requestMatchers("/admin/**").authenticated()
+                        .anyRequest().permitAll()  // This line allows everything else
+                )
+                .formLogin(form -> form
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/admin", true)
+                        .permitAll()
+                )
+                .logout(LogoutConfigurer::permitAll)
+                // enable h2 console
+                .csrf(AbstractHttpConfigurer::disable)
+                .headers(headers -> headers
+                        .defaultsDisabled()
+                        .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin)
+                );
+
+        return http.build();
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManager(
+            AuthenticationConfiguration authenticationConfiguration) throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
+
+    @Bean
+    public org.springframework.security.authentication.dao.DaoAuthenticationProvider authenticationProvider() {
+        var authProvider = new org.springframework.security.authentication.dao.DaoAuthenticationProvider();
+        var userDetailsService = new org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl();
+        userDetailsService.setDataSource(dataSource);
+        userDetailsService.setUsersByUsernameQuery(usersQuery);
+        userDetailsService.setAuthoritiesByUsernameQuery(rolesQuery);
+
+        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder);
+        return authProvider;
     }
 }

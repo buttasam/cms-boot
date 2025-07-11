@@ -8,7 +8,7 @@ INSERT INTO `page` (`id`, `url`, `title`) VALUES
 
 
 INSERT INTO `page_text` (`id`, `content`, `page_id`, `identity`, `type`) VALUES
-  (1, 'Wellcome text', 1, 'wellcome-text', 'TEXT_BOX'),
+  (1, 'Welcome text', 1, 'wellcome-text', 'TEXT_BOX'),
   (2, 'Homepage text', 1, 'homepage-text', 'CK_EDITOR'),
   (3, 'About text', 2, 'about-text', 'CK_EDITOR'),
   (4, 'Contacts text', 3, 'contacts-text', 'CK_EDITOR');
@@ -27,7 +27,7 @@ INSERT INTO `role` (`id`, `role`) VALUES
   (2, 'ROLE_ADMIN'),
   (3, 'ROLE_DEVELOPER');
 
-INSERT INTO `user` (`id`, `active`, `email`, `first_name`, `last_name`, `password`) VALUES
+INSERT INTO `app_user` (`id`, `active`, `email`, `first_name`, `last_name`, `password`) VALUES
   (1, 1, 'developer@admin.com', 'Joe', 'Doe', '$2a$10$Jg/n0bwaYZxJBhTPVhWuDO989e3xmLbUPnB/IXNde/LfbCHjPPt8.'),
   (2, 1, 'admin@admin.com', 'Joe', 'Doe', '$2a$10$Jg/n0bwaYZxJBhTPVhWuDO989e3xmLbUPnB/IXNde/LfbCHjPPt8.');
 

@@ -1,5 +1,6 @@
 package app.common.service.notification.api;
 
+
 import app.persistence.entity.message.Notification;
 
 import java.util.List;

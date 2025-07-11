@@ -3,7 +3,6 @@ package app.admin.controller;
 import app.admin.controller.parent.AdminAbstractController;
 import app.common.service.notification.api.NotificationService;
 import app.config.anotation.AdminController;
-import app.persistence.repository.message.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,107 +1,75 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-    <title>CMS Boot | login</title>
-
-    <!-- Bootstrap -->
-    <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet"/>
-    <!-- Font Awesome -->
-    <link href="/webjars/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-    <!-- NProgress -->
-    <link href="/webjars/nprogress/0.1.2/css/nprogress.css" rel="stylesheet"/>
-    <!-- Animate.css -->
-    <link href="/webjars/animate.css/3.5.2/animate.min.css" rel="stylesheet"/>
-
-    <!-- Custom Theme Style -->
-    <link href="admin/css/custom.min.css" rel="stylesheet"/>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="~{front/fragments/header :: head}">
 </head>
 
-<body class="login">
-<div>
-    <a class="hiddenanchor" id="signup"></a>
-    <a class="hiddenanchor" id="signin"></a>
+<body class="min-h-screen flex items-center justify-center bg-gray-100">
+<!-- Wrapper with Alpine state -->
+<div x-data="{ form: 'login' }" class="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
 
-    <div class="login_wrapper">
-        <div class="animate form login_form">
-            <section class="login_content">
-                <form th:action="@{/login}" method="post">
-                    <h1>Login</h1>
+    <!-- ─── LOGIN ─────────────────────────────────────────────────────────── -->
+    <section
+            x-show="form === 'login'"
+    >
+        <h1 class="text-2xl font-semibold text-center mb-6">Login</h1>
 
-                    <div th:if="${param.error}">
-                        Invalid name or password.
-                    </div>
-                    <div th:if="${param.logout}">
-                        You have been logged out.
-                    </div>
+        <form th:action="@{/login}" method="post" class="space-y-4">
 
-                    <div>
-                        <input name="username" type="text" class="form-control" placeholder="Username" required=""/>
-                    </div>
-                    <div>
-                        <input name="password" type="password" class="form-control" placeholder="Password" required=""/>
-                    </div>
-                    <div>
-                        <input class="btn btn-default submit center" type="submit" value="Login"/>
-                        <a class="reset_pass" href="#">Forgotten password?</a>
-                    </div>
+            <div th:if="${param.error}" class="text-red-600 text-sm">
+                Invalid username or password.
+            </div>
+            <div th:if="${param.logout}" class="text-green-600 text-sm">
+                You have been logged out.
+            </div>
 
-                    <div class="clearfix"></div>
+            <input name="username" type="text" placeholder="Username" required
+                   class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-200" />
 
-                    <div class="separator">
-                        <p class="change_link">
-                            <a href="#signup" class="to_register"> Create new account </a>
-                        </p>
+            <input name="password" type="password" placeholder="Password" required
+                   class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-200" />
 
-                        <div class="clearfix"></div>
-                        <br/>
+            <button type="submit"
+                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded">
+                Login
+            </button>
 
-                    </div>
-                </form>
-            </section>
-        </div>
+            <div class="flex justify-between text-sm mt-3">
+                <a href="#" @click.prevent="form='register'" class="text-indigo-600 hover:underline">
+                    Create new account
+                </a>
+            </div>
+        </form>
+    </section>
 
-        <div id="register" class="animate form registration_form">
-            <section class="login_content">
-                <form>
-                    <h1>Create new account</h1>
-                    <div>
-                        <input type="text" class="form-control" placeholder="Username" required=""/>
-                    </div>
-                    <div>
-                        <input type="email" class="form-control" placeholder="Email" required=""/>
-                    </div>
-                    <div>
-                        <input type="password" class="form-control" placeholder="Password" required=""/>
-                    </div>
-                    <div>
-                        <input type="password" class="form-control" placeholder="Password confirm" required=""/>
-                    </div>
-                    <div>
-                        <a class="btn btn-default submit" href="index.html">Create</a>
-                    </div>
+    <section
+            x-show="form === 'register'"
+    >
+        <h1 class="text-2xl font-semibold text-center mb-6">Create new account</h1>
 
-                    <div class="clearfix"></div>
+        <form th:action="@{/register}" method="post" class="space-y-4">
+            <input name="username" type="text" placeholder="Username" required
+                   class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-200" />
 
-                    <div class="separator">
-                        <p class="change_link">Already a member ?
-                            <a href="#signin" class="to_register"> Log in </a>
-                        </p>
+            <input name="email" type="email" placeholder="Email" required
+                   class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-200" />
 
-                        <div class="clearfix"></div>
-                        <br/>
+            <input name="password" type="password" placeholder="Password" required
+                   class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-200" />
 
-                    </div>
-                </form>
-            </section>
-        </div>
-    </div>
+            <input name="password_confirm" type="password" placeholder="Password confirm" required
+                   class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-200" />
+
+            <button type="submit"
+                    class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded">
+                Create
+            </button>
+
+            <p class="text-center text-sm mt-3">
+                Already a member?
+                <a href="#" @click.prevent="form='login'" class="text-indigo-600 hover:underline">Log in</a>
+            </p>
+        </form>
+    </section>
 </div>
 </body>
 </html>
