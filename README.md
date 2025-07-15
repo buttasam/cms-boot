@@ -1,81 +1,83 @@
 # CMS Spring Boot [![Build Status](https://travis-ci.com/buttasam/cms-boot.svg?token=XnPX8at6Nczst9oxaW5N&branch=master)](https://travis-ci.com/buttasam/cms-boot)
-CMS based on [Spring Boot](https://spring.io/projects/spring-boot). 
 
-The aim is to create relative small, flexible and extendable content management system based pure on Spring Boot and SQL database.
+CMS based on [Spring Boot](https://spring.io/projects/spring-boot).
 
-It is an alternative to complex solutions such as Liferay, which are quite hard to understand.
+The aim is to create a lightweight, flexible, and extensible content management system built purely on Spring Boot and an SQL database.
 
 ## Architecture
 
-It is classical MVC application, so everyone can understand it very easy and quicky.
+This project follows a classic __MVC__ architecture — simple, intuitive, and easy to understand for most developers.
 
-It uses awesome [Spring JPA](https://spring.io/guides/gs/accessing-data-jpa/) to manipulate entities.
+It uses the powerful [Spring Data JPA](https://spring.io/guides/gs/accessing-data-jpa/) for data persistence and entity
+management.
 
-## Quickstart
+## 🚀 Quickstart
+
+> Prerequisites: Java 24
+> We recommend to use [SDKMAN](https://sdkman.io) to manage multiple Java versions.
 
 1) Clone repository
 2) Go to project folder `cd cms-boot`
-3) Build project `./gradlew build`
-4) Run project `java -jar build/libs/cms-boot-0.2-SNAPSHOT.jar --spring.profiles.active=dev`
-5) Run it on `localhost:8080`
+3) Run the application `./gradlew bootRun`
 
-Better way of usage is to create local database. Create file *application-local.yml* from *application-local.yml.template* and run it in local profile.
+The application is running on `http://localhost:8080`
 
-### Login
-You can login as admin or developer on: `/login` 
-- `admin@admin.com / admin`
-- `developer@admin.com / admin`
+> Note: The default database is H2 (in-memory). Access the H2 console at http://localhost:8080/h2-console (Credentials_
+> sa /
+> test). This setup is suitable for development and testing purposes only.
 
+### 🔐 Login
 
-### Usage
+You can log in at `/login` using these default credentials:
 
-As a developer you can in administration add page texts and page images.
+| __Role__  | __Email__           | __Password__ |
+|-----------|---------------------|--------------|
+| Admin     | admin@admin.com     | admin        |
+| Developer | developer@admin.com | admin        |
+
+### 🛠️ Usage
+
+As a __developer__, you can manage page texts and page images via the admin interface.
+
+As an __administrator__, you can edit these texts and images.
 
 ![cms-spring-boot](doc/img/admin.png)
 
+### Example
 
+Use the `addPageData(model, page)` method to inject dynamic content into your views.
+Example from `HomepageController.java`:
 
-As a administrator you can edit this page texts and images.
+```java
 
-Insert data to templates in controllers calling method `addPageData` for example HomapageController.java:
+@RequestMapping("/")
+public String index(Model model) {
+    addPageData(model, "homepage");
 
+    return "front/index";
+}
 ```
-    @RequestMapping("/")
-    public String index(Model model) {
-        addPageData(model, "homepage");
 
-        return "front/index";
-    }
-```
+In your templates (e.g., `about.html`), you can access these dynamic variables:
 
-In templates you maps *pageTexts* and *pageImages*. You have an access to data. For example in *about.html*. 
+```html
 
-```
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <h1 class="mt-5">About us</h1>
-            <p th:utext="${pageTexts.get('about-text')}"></p>
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <h1 class="mt-5">About us</h1>
+        <p th:utext="${pageTexts.get('about-text')}"></p>
 
-            <image th:src="@{/file/} + ${pageImages.get('about-image')}"></image>
+        <image th:src="@{/file/} + ${pageImages.get('about-image')}"></image>
 
-        </div>
     </div>
+</div>
 ```
-
 
 ### IDEA Config
 
-We recommand you to use IntelliJ IDEA.
-
-#### Profile
-
-Dev profile can be actived. In that case application-dev.yml is used and datasource
-is h2 db. To do in idea go to 
- 
-`Run/Debug Configuration > Active Profiles > Insert "dev"`  
+We recommend you to use IntelliJ IDEA.
 
 #### Lombok
 
-Lombok is present and should be used in every entity. To run it smoothly in IDEA install Lombok plugin and 
-turn on annotation processors in settings.
-``
+1.	Install the Lombok Plugin via Settings → Plugins.
+2.	Enable annotation processing in Settings → Build, Execution, Deployment → Compiler → Annotation Processors.
