@@ -13,9 +13,8 @@ import java.util.List;
 @Repository
 public interface NotificationRepository extends JpaRepository<Notification, Long> {
 
-    public List<Notification> findAllByStatus(NotificationStatus notificationStatus);
+    List<Notification> findAllByStatus(NotificationStatus notificationStatus);
 
-
-    public List<Notification> findAllByStatusNot(NotificationStatus notificationStatus);
+    List<Notification> findAllByStatusNot(NotificationStatus notificationStatus);
 
 }

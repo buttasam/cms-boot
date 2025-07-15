@@ -12,7 +12,6 @@ import java.util.Optional;
 @Repository
 public interface PageImageRepository extends JpaRepository<PageImage, Long> {
 
-
-    public Optional<PageImage> getByIdentity(String identity);
+    Optional<PageImage> getByIdentity(String identity);
 
 }

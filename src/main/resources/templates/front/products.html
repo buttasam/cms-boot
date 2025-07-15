@@ -1,38 +1,34 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head th:replace="front/fragments/header :: head">
+<head th:replace="~{front/fragments/header :: head}">
 </head>
 
 <body>
 
-<!-- main menu -->
-<div th:replace="front/fragments/header :: main-menu"></div>
-<!-- /main menu -->
+<div th:replace="~{front/fragments/header :: main-menu}"></div>
 
-<!-- Page Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12 text-center">
-            <h1 class="mt-5">Products</h1>
+<section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-center text-center">
+        <h1 class="mt-20 text-4xl font-bold">Products</h1>
 
-            <table class="table">
-                <thead class="thead-dark">
+        <div class="overflow-x-auto w-full mt-8">
+            <table class="min-w-full divide-y divide-gray-200 shadow-md rounded-lg">
+                <thead class="bg-gray-800 text-white">
                 <tr>
-                    <th>Product name</th>
-                    <th>Price</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Product name</th>
+                    <th class="px-6 py-3 text-left text-sm font-semibold uppercase tracking-wider">Price</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody class="bg-white divide-y divide-gray-200">
                 <tr th:each="product : ${products}">
-                    <td th:text="${product.title}"></td>
-                    <td th:text="${product.price}"></td>
+                    <td class="px-6 py-4 whitespace-nowrap" th:text="${product.title}"></td>
+                    <td class="px-6 py-4 whitespace-nowrap" th:text="${product.price}"></td>
                 </tr>
                 </tbody>
             </table>
-
         </div>
     </div>
-</div>
+</section>
 
 </body>
 </html>

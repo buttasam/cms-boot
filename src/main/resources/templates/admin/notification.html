@@ -1,22 +1,19 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="admin/fragments/header :: head">
+<head th:replace="~{admin/fragments/header :: head}">
 </head>
 
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">
 
-        <!-- top navigation -->
-        <div th:replace="admin/fragments/header :: top-menu"></div>
-        <!-- /top navigation -->
+        <div th:replace="~{admin/fragments/header :: top-menu}"></div>
 
-        <!-- page content -->
         <div class="right_col" role="main" style="min-height: 914px;">
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Upozornění</h3>
+                        <h3>Notifications</h3>
                     </div>
                 </div>
 
@@ -30,8 +27,8 @@
                                 <table class="table table-striped projects">
                                     <thead>
                                     <tr>
-                                        <th>Zpráva</th>
-                                        <th>Akce</th>
+                                        <th>Message</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -39,8 +36,11 @@
                                         <td th:text="${notification.message}">
                                         </td>
                                         <td>
-                                            <a th:if="${!notification.isRead()}" th:href="@{/admin/notification/read(notificationId=${notification.id})}" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> Přečíst </a>
-                                            <a th:href="@{/admin/notification/delete(notificationId=${notification.id})}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Odstanit </a>
+                                            <a th:if="${!notification.isRead()}"
+                                               th:href="@{/admin/notification/read(notificationId=${notification.id})}"
+                                               class="btn btn-info btn-xs"><i class="fa fa-eye"></i> Přečíst </a>
+                                            <a th:href="@{/admin/notification/delete(notificationId=${notification.id})}"
+                                               class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Odstanit </a>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -51,16 +51,13 @@
                 </div>
             </div>
         </div>
-        <!-- /page content -->
     </div>
 
 
-    <!-- footer content -->
-    <footer th:replace="admin/fragments/footer :: footer"></footer>
-    <!-- /footer content -->
+    <footer th:replace="~{admin/fragments/footer :: footer}"></footer>
 </div>
 
-<div th:replace="admin/fragments/footer :: footer-scripts"></div>
+<div th:replace="~{admin/fragments/footer :: footer-scripts}"></div>
 
 </body>
 </html>

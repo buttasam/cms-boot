@@ -8,8 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- *
- * Indicates that controller is only form admin sites.
+ * Indicates that a controller is for admin sites only.
  *
  * @author Samuel Butta
  */

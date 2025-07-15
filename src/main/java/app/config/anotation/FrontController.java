@@ -8,8 +8,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- *
- * Indicates that controller is only form frontend sites.
+ * Indicates that a controller is for frontend sites only.
  *
  * @author Samuel Butta
  */

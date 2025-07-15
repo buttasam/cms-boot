@@ -10,13 +10,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- * @author Samuel Butta
- */
 @Controller
 @RequestMapping("/file")
 public class FileController {
-
 
     private final StorageService storageService;
 
@@ -31,7 +27,7 @@ public class FileController {
 
         return ResponseEntity
                 .ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\""+file.getFilename()+"\"")
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + file.getFilename() + "\"")
                 .body(file);
     }
 

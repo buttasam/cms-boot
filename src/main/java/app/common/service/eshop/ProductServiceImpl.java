@@ -16,9 +16,7 @@ import java.util.Optional;
 @Service
 public class ProductServiceImpl implements ProductService {
 
-
-    private ProductRepository productRepository;
-
+    private final ProductRepository productRepository;
 
     @Autowired
     public ProductServiceImpl(ProductRepository productRepository) {
@@ -27,7 +25,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void saveProduct(ProductForm productForm) {
-        Optional<Product> productOpt = productRepository.getById(productForm.getProductId());
+        Optional<Product> productOpt = Optional.ofNullable(productForm.getProductId()).map(productRepository::getById);
         Product product = productOpt.orElse(new Product());
 
         product.setTitle(productForm.getTitle());

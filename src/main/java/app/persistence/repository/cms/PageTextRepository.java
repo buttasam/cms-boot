@@ -12,6 +12,6 @@ import java.util.Optional;
 @Repository
 public interface PageTextRepository extends JpaRepository<PageText, Long> {
 
-    public Optional<PageText> findByIdentity(String identity);
+    Optional<PageText> findByIdentity(String identity);
 
 }

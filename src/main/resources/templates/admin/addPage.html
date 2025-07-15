@@ -1,17 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="admin/fragments/header :: head">
+<head th:replace="~{admin/fragments/header :: head}">
 </head>
 
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">
 
-        <!-- top navigation -->
-        <div th:replace="admin/fragments/header :: top-menu"></div>
-        <!-- /top navigation -->
+        <div th:replace="~{admin/fragments/header :: top-menu}"></div>
 
-        <!-- page content -->
         <div class="right_col" role="main">
 
             <div class="row">
@@ -43,8 +40,7 @@
                                   novalidate="">
 
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Název
-                                        stránky
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Page name
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -54,7 +50,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Url stránky
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Page URL
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -78,18 +74,13 @@
                     </div>
                 </div>
             </div>
-
         </div>
-        <!-- /page content -->
     </div>
 
-
-    <!-- footer content -->
-    <footer th:replace="admin/fragments/footer :: footer"></footer>
-    <!-- /footer content -->
+    <footer th:replace="~{admin/fragments/footer :: footer}"></footer>
 </div>
 
-<div th:replace="admin/fragments/footer :: footer-scripts"></div>
+<div th:replace="~{admin/fragments/footer :: footer-scripts}"></div>
 
 </body>
 </html>

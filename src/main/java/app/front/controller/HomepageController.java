@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FrontController
 public class HomepageController extends FrontAbstractController {
 
-
     @RequestMapping("/")
     public String index(Model model) {
         addPageData(model, "homepage");

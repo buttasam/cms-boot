@@ -1,21 +1,16 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="admin/fragments/header :: head">
+<head th:replace="~{admin/fragments/header :: head}">
 </head>
 
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">
 
-        <!-- top navigation -->
-        <div th:replace="admin/fragments/header :: top-menu"></div>
-        <!-- /top navigation -->
+        <div th:replace="~{admin/fragments/header :: top-menu}"></div>
 
-        <!-- page content -->
         <div class="right_col" role="main">
-
             <div class="row">
-
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
@@ -30,7 +25,6 @@
                         </div>
 
                         <div class="x_content">
-
                             <div class="table-responsive">
                                 <table class="table table-striped jambo_table bulk_action">
                                     <thead>
@@ -41,31 +35,25 @@
 
                                     <tbody>
                                     <tr class="even pointer" th:each="product : ${products}">
-                                        <td >
-                                            <a th:href="@{/admin/product/addProduct(productId=${product.id})}" th:text="${product.title}"></a>
+                                        <td>
+                                            <a th:href="@{/admin/product/addProduct(productId=${product.id})}"
+                                               th:text="${product.title}"></a>
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-        <!-- /page content -->
     </div>
 
-
-    <!-- footer content -->
-    <footer th:replace="admin/fragments/footer :: footer"></footer>
-    <!-- /footer content -->
+    <footer th:replace="~{admin/fragments/footer :: footer}"></footer>
 </div>
 
-<div th:replace="admin/fragments/footer :: footer-scripts"></div>
+<div th:replace="~{admin/fragments/footer :: footer-scripts}"></div>
 
 </body>
 </html>

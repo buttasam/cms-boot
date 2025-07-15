@@ -1,69 +1,69 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 
 <head th:fragment="head">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
-    <meta name="description" content=""/>
-    <meta name="author" content=""/>
+    <!-- Tailwind CSS v4 (stand-alone build) -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <title>CMS Boot</title>
+    <!-- Alpine.js v3 (for the mobile menu toggle) -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-    <!-- Bootstrap -->
-    <link href="https://blackrockdigital.github.io/startbootstrap-bare/vendor/bootstrap/css/bootstrap.min.css"
-          rel="stylesheet"/>
-    <!-- jQuery -->
-    <script src="https://blackrockdigital.github.io/startbootstrap-bare/vendor/jquery/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="https://blackrockdigital.github.io/startbootstrap-bare/vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Custom styles for this template -->
-    <style>
-        body {
-            padding-top: 54px;
-        }
-
-        @media (min-width: 992px) {
-            body {
-                padding-top: 56px;
-            }
-        }
-
-    </style>
-
+    <!-- Hide elements carrying x-cloak until Alpine is ready -->
+    <style>[x-cloak] {
+        display: none !important
+    }</style>
 </head>
 
-<body>
+<body class="bg-white">
 
-<!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" th:fragment="main-menu">
-    <div class="container">
-        <a class="navbar-brand" th:href="@{/}">Company</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+
+<nav class="fixed inset-x-0 top-0 bg-gray-900 border-gray-200 text-white z-50" x-data="{ open: false }"
+     th:fragment="main-menu">
+
+    <div class="max-w-screen-xl flex items-center justify-between flex-wrap mx-auto p-4">
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+            <span class="text-2xl font-semibold whitespace-nowrap">Company</span>
+        </a>
+
+        <button @click="open = !open"
+                type="button"
+                class="inline-flex items-center justify-center p-2 w-10 h-10 rounded-lg md:hidden
+                   text-gray-400 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600"
+                aria-controls="navbar"
+                :aria-expanded="open.toString()">
+            <span class="sr-only">Open main menu</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 17 14">
+                <path d="M1 1h15M1 7h15M1 13h15"/>
+            </svg>
         </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/}">Homepage</a>
+
+        <div :class="open ? 'block w-full mt-4' : 'hidden w-full mt-4'"
+             class="md:block md:w-auto md:mt-0" id="navbar">
+            <ul class="flex flex-col md:flex-row md:space-x-8">
+                <li>
+                    <a th:href="@{/}">Homepage</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/about}">About</a>
+                <li>
+                    <a th:href="@{/about}">About</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/products}" href="#">Products</a>
+                <li>
+                    <a th:href="@{/products}">Products</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/contacts}">Contacts</a>
+                <li>
+                    <a th:href="@{/contacts}">Contacts</a>
+                </li>
+                <li>
+                    <a th:href="@{/login}">Login</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
 
-
 </body>
-
 </html>

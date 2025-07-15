@@ -1,9 +1,17 @@
 package app.persistence.entity.cms;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.Lob;
 import lombok.Data;
 
-import javax.persistence.*;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 /**
  * @author Samuel Butta
  */
@@ -13,7 +21,7 @@ import javax.persistence.*;
 public class PageText {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Lob

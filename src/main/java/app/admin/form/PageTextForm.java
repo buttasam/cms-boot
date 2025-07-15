@@ -1,12 +1,12 @@
 package app.admin.form;
 
 import app.persistence.entity.cms.PageTextType;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotNull;
 
 /**
  * @author Samuel Butta

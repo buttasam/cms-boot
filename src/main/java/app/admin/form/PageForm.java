@@ -2,8 +2,8 @@ package app.admin.form;
 
 import lombok.Data;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 /**
  * @author Samuel Butta

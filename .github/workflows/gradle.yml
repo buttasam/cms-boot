@@ -1,0 +1,35 @@
+name: Gradle Build (JDK 24)
+
+on:
+  push:
+    branches: [ springboot-upgrade ]
+  pull_request:
+    branches: [ springboot-upgrade ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1 — Fetch the code
+      - name: Checkout source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      # 2 — Install JDK 24 (Temurin is the reference build for most users)
+      - name: Set up Temurin JDK 24
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '24'  # automatically picks the latest GA build
+          cache: gradle       # built-in dependency & wrapper caching
+
+      # 3 — Run the Gradle wrapper
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v3
+        with:
+          arguments: build --no-daemon --warning-mode=fail

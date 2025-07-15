@@ -15,7 +15,7 @@ import java.util.List;
 @Service
 public class NotificationServiceImpl implements NotificationService {
 
-    private NotificationRepository notificationRepository;
+    private final NotificationRepository notificationRepository;
 
     @Autowired
     public NotificationServiceImpl(NotificationRepository notificationRepository) {
@@ -33,14 +33,14 @@ public class NotificationServiceImpl implements NotificationService {
 
     @Override
     public void readNotification(Long notificationId) {
-        Notification notification = notificationRepository.getOne(notificationId);
+        Notification notification = notificationRepository.getReferenceById(notificationId);
         notification.setStatus(NotificationStatus.READ);
         notificationRepository.save(notification);
     }
 
     @Override
     public void deleteNotification(Long notificationId) {
-        Notification notification = notificationRepository.getOne(notificationId);
+        Notification notification = notificationRepository.getReferenceById(notificationId);
         notification.setStatus(NotificationStatus.DELETED);
         notificationRepository.save(notification);
     }

@@ -1,7 +1,7 @@
 package app.persistence.entity.auth;
 
 /**
- * Prehled uzivatelskych roli v cele aplikaci.
+ * User roles.
  *
  * @author Samuel Butta
  */

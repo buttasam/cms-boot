@@ -10,7 +10,7 @@ import app.common.service.cms.api.StorageService;
 import app.config.anotation.AdminController;
 import app.persistence.entity.cms.Page;
 import app.persistence.repository.cms.PageRepository;
-import app.persistence.repository.cms.PageTextRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.ui.Model;
@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.validation.Valid;
 import java.util.Optional;
 
 /**
@@ -36,27 +35,29 @@ public class PageController extends AdminAbstractController {
     /**
      * Services
      */
-    private PageService pageService;
-    private StorageService storageService;
+    private final PageService pageService;
+    private final StorageService storageService;
 
     /**
      * Repositories
      */
-    private PageRepository pageRepository;
-    private PageTextRepository pageTextRepository;
+    private final PageRepository pageRepository;
 
     /**
      * Validators
      */
-    private PageValidator pageValidator;
-    private PageTextValidator pageTextValidator;
+    private final PageValidator pageValidator;
+    private final PageTextValidator pageTextValidator;
 
     @Autowired
-    public PageController(PageService pageService, StorageService storageService, PageRepository pageRepository, PageTextRepository pageTextRepository, PageValidator pageValidator, PageTextValidator pageTextValidator) {
+    public PageController(PageService pageService,
+                          StorageService storageService,
+                          PageRepository pageRepository,
+                          PageValidator pageValidator,
+                          PageTextValidator pageTextValidator) {
         this.pageService = pageService;
         this.storageService = storageService;
         this.pageRepository = pageRepository;
-        this.pageTextRepository = pageTextRepository;
         this.pageValidator = pageValidator;
         this.pageTextValidator = pageTextValidator;
     }
@@ -85,9 +86,9 @@ public class PageController extends AdminAbstractController {
     @PreAuthorize("hasRole('DEVELOPER')")
     @PostMapping("/page/addPageText")
     public String pageTextForm(@Valid PageTextForm pageTextForm, BindingResult bindingResult, Model model, RedirectAttributes redirectAttributes) {
-        Page page = pageRepository.getOne(pageTextForm.getPageId());
+        Page page = pageRepository.getReferenceById(pageTextForm.getPageId());
         if (bindingResult.hasErrors() || !pageTextValidator.isAddPageTextValid(pageTextForm)) {
-            model.addAttribute("page",page);
+            model.addAttribute("page", page);
             return "admin/page";
         }
         pageService.savePageText(pageTextForm);
@@ -99,7 +100,7 @@ public class PageController extends AdminAbstractController {
     @PostMapping("/page/editPageText")
     public String pageTextEditForm(@RequestParam String content, @RequestParam String identity, @RequestParam Long pageId, RedirectAttributes redirectAttributes) {
         pageService.updatePageText(identity, content);
-        Page page = pageRepository.getOne(pageId);
+        Page page = pageRepository.getReferenceById(pageId);
 
         redirectAttributes.addAttribute("pageUrl", page.getUrl());
         return redirect("/admin/page/{pageUrl}");
@@ -131,7 +132,7 @@ public class PageController extends AdminAbstractController {
                                @RequestParam("identity") String identity,
                                @RequestParam("pageId") Long pageId,
                                RedirectAttributes redirectAttributes) {
-        Page page = pageRepository.getOne(pageId);
+        Page page = pageRepository.getReferenceById(pageId);
         storageService.store(file, identity, page);
 
         redirectAttributes.addAttribute("pageUrl", page.getUrl());

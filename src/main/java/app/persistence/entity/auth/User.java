@@ -1,8 +1,16 @@
 package app.persistence.entity.auth;
 
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.Table;
 import lombok.Data;
 
-import javax.persistence.*;
 import java.util.Set;
 
 /**
@@ -10,10 +18,11 @@ import java.util.Set;
  */
 @Entity
 @Data
+@Table(name = "app_user")
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
@@ -32,7 +41,7 @@ public class User {
     @Column
     private boolean active;
 
-
     @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "USER_ROLES")
     private Set<Role> roles;
 }

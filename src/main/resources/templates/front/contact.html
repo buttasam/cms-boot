@@ -1,61 +1,61 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
-<head th:replace="front/fragments/header :: head">
+<head th:insert="~{front/fragments/header :: head}">
 </head>
 
 <body>
 
-<!-- main menu -->
-<div th:replace="front/fragments/header :: main-menu"></div>
-<!-- /main menu -->
+<div th:replace="~{front/fragments/header :: main-menu}"></div>
 
-<!-- Page Content -->
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12 text-center">
-
-            <h1 class="mt-5">Contacts</h1>
-
-            <p th:utext="${pageTexts.get('contacts-text')}"></p>
-
-        </div>
-
-        <div class="col-lg-12 ">
-            <form th:action="@{/contacts/send}" th:object="${contactForm}" method="post" enctype="multipart/form-data">
-
-                <div class="form-group">
-                    <label>
-                        E-mail
-                        <span class="required">*</span>
-                    </label>
-                    <div>
-                        <input th:field="*{email}" type="email" required="required"
-                               class="form-control"/>
-                        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>
-                        Message
-                        <span class="required">*</span>
-                    </label>
-                    <div>
-                        <textarea th:field="*{message}" type="email" required="required"
-                               class="form-control"></textarea>
-                        <span th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></span>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div>
-                        <input type="submit" class="btn" value="Send"/>
-                    </div>
-                </div>
-            </form>
-        </div>
+<section class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center">
+        <h1 class="mt-20 text-4xl font-bold tracking-tight" th:utext="${pageTexts.get('contacts-text')}">
+        </h1>
     </div>
-</div>
+
+    <form class="mt-12 space-y-8"
+          th:action="@{/contacts/send}"
+          th:object="${contactForm}"
+          method="post"
+          enctype="multipart/form-data">
+
+        <div class="space-y-2">
+            <label class="block text-sm font-medium">
+                E-mail
+                <span class="text-red-600">*</span>
+            </label>
+            <input th:field="*{email}"
+                   type="email"
+                   required
+                   class="w-full rounded-md border border-gray-300 p-3 shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"/>
+            <span th:if="${#fields.hasErrors('email')}"
+                  th:errors="*{email}"
+                  class="block text-sm text-red-600"></span>
+        </div>
+
+        <div class="space-y-2">
+            <label class="block text-sm font-medium">
+                Message
+                <span class="text-red-600">*</span>
+            </label>
+            <textarea th:field="*{message}"
+                      required
+                      rows="5"
+                      class="w-full rounded-md border border-gray-300 p-3 shadow-sm resize-y focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            </textarea>
+            <span th:if="${#fields.hasErrors('message')}"
+                  th:errors="*{message}"
+                  class="block text-sm text-red-600">
+            </span>
+        </div>
+
+        <div>
+            <input type="submit"
+                   value="Send"
+                   class="inline-flex cursor-pointer items-center rounded-md bg-indigo-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"/>
+        </div>
+    </form>
+</section>
 
 </body>
 </html>
