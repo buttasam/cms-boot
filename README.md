@@ -1,4 +1,4 @@
-# CMS Spring Boot [![Build Status](https://travis-ci.com/buttasam/cms-boot.svg?token=XnPX8at6Nczst9oxaW5N&branch=master)](https://travis-ci.com/buttasam/cms-boot)
+# CMS Spring Boot ![Build Status](https://github.com/buttasam/cms-boot/actions/workflows/gradle.yml/badge.svg?branch=master)
 
 CMS based on [Spring Boot](https://spring.io/projects/spring-boot).
 
