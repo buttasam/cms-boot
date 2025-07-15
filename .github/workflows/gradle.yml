@@ -2,9 +2,10 @@ name: Gradle Build (JDK 24)
 
 on:
   push:
-    branches: [ springboot-upgrade ]
+    branches:
+      - master
   pull_request:
-    branches: [ springboot-upgrade ]
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: read
