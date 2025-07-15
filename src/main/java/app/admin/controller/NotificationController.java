@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/admin")
 public class NotificationController extends AdminAbstractController {
 
-
-    private NotificationService notificationService;
+    private final NotificationService notificationService;
 
     @Autowired
     public NotificationController(NotificationService notificationService) {

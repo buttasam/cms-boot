@@ -13,7 +13,7 @@ import java.util.Optional;
 @Repository
 public interface PageRepository extends JpaRepository<Page, Long> {
 
-    public Optional<Page> getByUrl(String url);
+    Optional<Page> getByUrl(String url);
 
-    public List<Page> findByParentPage(Page parentPage);
+    List<Page> findByParentPage(Page parentPage);
 }

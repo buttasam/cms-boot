@@ -13,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
@@ -25,10 +24,8 @@ import java.util.Optional;
 @RequestMapping("/admin/product")
 public class ProductController extends AdminAbstractController {
 
-
-    private ProductService productService;
-
-    private ProductRepository productRepository;
+    private final ProductService productService;
+    private final ProductRepository productRepository;
 
     @Autowired
     public ProductController(ProductService productService, ProductRepository productRepository) {
@@ -46,7 +43,7 @@ public class ProductController extends AdminAbstractController {
 
 
     @RequestMapping("/addProduct")
-    public String addProduct(@RequestParam(required = false) Long productId, ProductForm productForm, Model model) {
+    public String addProduct(ProductForm productForm) {
         Optional<Product> productOpt = Optional.ofNullable(productForm.getProductId()).map(productRepository::getById);
 
         productOpt.ifPresent(p -> {
@@ -60,7 +57,6 @@ public class ProductController extends AdminAbstractController {
 
     @PostMapping("/addProduct")
     public String productForm(@Valid ProductForm productForm, BindingResult bindingResult) {
-
         if (!bindingResult.hasErrors()) {
             productService.saveProduct(productForm);
         }

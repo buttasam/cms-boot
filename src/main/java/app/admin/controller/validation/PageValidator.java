@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PageValidator {
 
-    private PageRepository pageRepository;
+    private final PageRepository pageRepository;
 
     @Autowired
     public PageValidator(PageRepository pageRepository) {
@@ -23,9 +23,7 @@ public class PageValidator {
      * @return true if page can be added
      */
     public boolean isAddPageValid(PageForm pageForm) {
-        boolean isValid = !pageRepository.getByUrl(pageForm.getUrl()).isPresent();
-
-        return isValid;
+        return pageRepository.getByUrl(pageForm.getUrl()).isEmpty();
     }
 
 }

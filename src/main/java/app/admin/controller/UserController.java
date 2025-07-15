@@ -17,29 +17,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("admin/users")
 public class UserController extends AdminAbstractController {
 
+    private final UserRepository userRepository;
 
     @Autowired
-    private UserRepository userRepository;
-
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @RequestMapping("/all")
     public String allUsers(Model model) {
         model.addAttribute("users", userRepository.findAll());
-
         return "/admin/all";
     }
 
     @RequestMapping("/delete")
     public String deleteUser(@RequestParam Long userId) {
-        System.out.println(userId);
-
-        // delete user
-        User user = userRepository.getOne(userId);
-
-        if (user != null) {
-            user.setActive(false);
-            userRepository.save(user);
-        }
+        User user = userRepository.getReferenceById(userId);
+        user.setActive(false);
+        userRepository.save(user);
 
         return redirect("/admin/users/all");
     }

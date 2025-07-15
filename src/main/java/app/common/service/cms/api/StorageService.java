@@ -4,13 +4,16 @@ import app.persistence.entity.cms.Page;
 import org.springframework.core.io.Resource;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.nio.file.Path;
+
 /**
  * @author Samuel Butta
  */
 public interface StorageService {
 
-    public void store(MultipartFile file, String identity, Page page);
+    void store(MultipartFile file, String identity, Page page);
 
+    Resource loadAsResource(String fileName);
 
-    public Resource loadAsResource(String fileName);
+    void setUploadPath(Path path);
 }

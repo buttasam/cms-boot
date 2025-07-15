@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PageTextValidator {
 
-    private PageTextRepository pageTextRepository;
+    private final PageTextRepository pageTextRepository;
 
     @Autowired
     public PageTextValidator(PageTextRepository pageTextRepository) {
@@ -23,9 +23,7 @@ public class PageTextValidator {
      * @return true if page text can be added
      */
     public boolean isAddPageTextValid(PageTextForm pageTextForm) {
-        boolean isValid = !pageTextRepository.findByIdentity(pageTextForm.getIdentity()).isPresent();
-
-        return isValid;
+        return pageTextRepository.findByIdentity(pageTextForm.getIdentity()).isEmpty();
     }
 
 }

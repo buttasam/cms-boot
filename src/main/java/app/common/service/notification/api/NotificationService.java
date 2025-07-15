@@ -15,33 +15,32 @@ public interface NotificationService {
      *
      * @param message text of notification
      */
-    public void notify(String message);
+    void notify(String message);
 
     /**
      * Notification is marked as read.
      *
      * @param notificationId
      */
-    public void readNotification(Long notificationId);
+    void readNotification(Long notificationId);
 
     /**
      * Delete notification.
      *
      * @param notificationId
      */
-    public void deleteNotification(Long notificationId);
+    void deleteNotification(Long notificationId);
 
 
     /**
      * @return all notifications with new status
      */
-    public List<Notification> findNewNotifications();
+    List<Notification> findNewNotifications();
 
 
     /**
      * @return all notifications with new or read
      */
-    public List<Notification> findActiveNotifications();
-
+    List<Notification> findActiveNotifications();
 
 }

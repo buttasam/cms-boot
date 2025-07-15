@@ -8,7 +8,7 @@ INSERT INTO `page` (`id`, `url`, `title`) VALUES
 
 
 INSERT INTO `page_text` (`id`, `content`, `page_id`, `identity`, `type`) VALUES
-  (1, 'Welcome text', 1, 'wellcome-text', 'TEXT_BOX'),
+  (1, 'Welcome text', 1, 'welcome-text', 'TEXT_BOX'),
   (2, 'Homepage text', 1, 'homepage-text', 'CK_EDITOR'),
   (3, 'About text', 2, 'about-text', 'CK_EDITOR'),
   (4, 'Contacts text', 3, 'contacts-text', 'CK_EDITOR');
@@ -37,3 +37,5 @@ INSERT INTO `user_roles` (`user_id`, `roles_id`) VALUES
   (1, 3),
   (2, 1),
   (2, 2);
+
+SET foreign_key_checks = 1;

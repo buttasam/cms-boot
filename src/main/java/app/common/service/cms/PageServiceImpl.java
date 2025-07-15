@@ -6,9 +6,9 @@ import app.common.service.cms.api.PageService;
 import app.persistence.entity.cms.Page;
 import app.persistence.entity.cms.PageImage;
 import app.persistence.entity.cms.PageText;
-import app.persistence.repository.cms.PageImageRepository;
 import app.persistence.repository.cms.PageRepository;
 import app.persistence.repository.cms.PageTextRepository;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,19 +25,15 @@ import java.util.stream.Collectors;
 @Service
 class PageServiceImpl implements PageService {
 
-
     private final PageRepository pageRepository;
-    private final PageImageRepository pageImageRepository;
     private final PageTextRepository pageTextRepository;
 
     @Autowired
-    public PageServiceImpl(PageRepository pageRepository, PageImageRepository pageImageRepository, PageTextRepository pageTextRepository) {
+    public PageServiceImpl(PageRepository pageRepository, PageTextRepository pageTextRepository) {
         this.pageRepository = pageRepository;
-        this.pageImageRepository = pageImageRepository;
         this.pageTextRepository = pageTextRepository;
     }
 
-    // FIXME osetreni
     @Override
     public void savePage(PageForm pageForm) {
         Page page = new Page();
@@ -48,7 +44,7 @@ class PageServiceImpl implements PageService {
 
         Page parentPage = null;
         if (parentPageId != null) {
-            parentPage = pageRepository.getOne(pageForm.getParentPageId());
+            parentPage = pageRepository.getReferenceById(pageForm.getParentPageId());
 
             List<Page> subPages = parentPage.getSubPages();
             subPages.add(page);
@@ -64,8 +60,7 @@ class PageServiceImpl implements PageService {
     @Override
     public void savePageText(PageTextForm pageTextForm) {
         PageText pageText = new PageText();
-
-        Page page = pageRepository.getOne(pageTextForm.getPageId());
+        Page page = pageRepository.getReferenceById(pageTextForm.getPageId());
 
         pageText.setIdentity(pageTextForm.getIdentity());
         pageText.setContent(pageTextForm.getContent());
@@ -77,28 +72,26 @@ class PageServiceImpl implements PageService {
 
     @Override
     public void updatePageText(@NotNull String identity, @NotNull String content) {
-        PageText pageText = pageTextRepository.findByIdentity(identity).orElse(null);
-        pageText.setContent(content);
-
-        pageTextRepository.save(pageText);
+        pageTextRepository.findByIdentity(identity).ifPresentOrElse(pageText -> {
+            pageText.setContent(content);
+            pageTextRepository.save(pageText);
+        }, () -> {
+            throw new EntityNotFoundException("PageText with identity '" + identity + "' not found.");
+        });
     }
 
     @Override
     public Map<String, String> createPageTextsMap(Optional<Page> pageOptional) {
-        Map<String, String> pageTexts = pageOptional
+        return pageOptional
                 .map(this::mapPage)
                 .orElseGet(Collections::emptyMap);
-
-        return pageTexts;
     }
 
     @Override
     public Map<String, String> createPageImagesMap(Optional<Page> pageOpt) {
-        Map<String, String> pageImages = pageOpt
+        return pageOpt
                 .map(this::mapPageImage)
                 .orElseGet(Collections::emptyMap);
-
-        return pageImages;
     }
 
     private Map<String, String> mapPage(Page page) {

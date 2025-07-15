@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FrontController
 public class ContactController extends FrontAbstractController {
 
-    private NotificationService notificationService;
+    private final NotificationService notificationService;
 
     @Autowired
     public ContactController(NotificationService notificationService) {

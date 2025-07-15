@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
- * Trida definuje pomocne servisni Beans pro IoC kontejner.
+ * This class defines helper service beans for the Spring IoC container.
  *
  * @author Samuel Butta
  */

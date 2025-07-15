@@ -14,6 +14,7 @@ import java.util.Optional;
  * @author Jakub Tucek
  */
 public interface PageService {
+
     void savePage(PageForm pageForm);
 
     void savePageText(PageTextForm pageTextForm);
@@ -21,14 +22,24 @@ public interface PageService {
     void updatePageText(@NotNull String identity, @NotNull String content);
 
     /**
-     * Map PageTexts of Page to hashmap.
-     * Value of PageText object is accessed using get with indentity as a parameter.
-     * e.g.: pageTexts.get('wellcome-text')
+     * Creates a map of text content from a given page.
+     * The map uses the identity of each PageText as the key.
+     * <p>
+     * Example usage:
+     * {@code pageTexts.get("welcome-text")}
      *
-     * @param pageOptional
-     * @return map of identity and pageText
+     * @param pageOptional the optional page containing text content
+     * @return a map where keys are identities and values are text content
      */
     Map<String, String> createPageTextsMap(Optional<Page> pageOptional);
 
-    Map<String,String> createPageImagesMap(Optional<Page> pageOpt);
+
+    /**
+     * Creates a map of image paths from a given page.
+     * The map uses the identity of each PageImage as the key.
+     *
+     * @param pageOptional the optional page containing images
+     * @return a map where keys are identities and values are image paths
+     */
+    Map<String, String> createPageImagesMap(Optional<Page> pageOptional);
 }
