@@ -5,37 +5,21 @@
 
 <body>
 
-<!-- main menu -->
 <div th:replace="~{front/fragments/header :: main-menu}"></div>
-<!-- /main menu -->
 
-<!-- Page Content -->
-<!-- Page content -->
 <section class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
     <div class="text-center">
-        <!-- Heading pulled from CMS -->
-        <h1
-                class="mt-20 text-4xl font-bold tracking-tight"
-                th:utext="${pageTexts.get('wellcome-text')}"
-        ></h1>
+        <h1 class="mt-20 text-4xl font-bold tracking-tight" th:utext="${pageTexts.get('wellcome-text')}"></h1>
 
         <p th:utext="${pageTexts.get('homepage-text')}"></p>
 
-        <!-- Authenticated-user details -->
-        <ul
-                sec:authorize="isAuthenticated()"
-                class="mt-4 list-none space-y-1 text-lg"
-        >
+        <!-- Show logged user roles -->
+        <ul sec:authorize="isAuthenticated()" class="mt-4 list-none space-y-1 text-lg">
             <li sec:authentication="name"></li>
             <li sec:authentication="principal.authorities"></li>
         </ul>
 
-        <!-- Hero / welcome image -->
-        <img
-                src="file/test.png"
-                alt="Welcome"
-                class="mt-10 w-full max-w-md mx-auto rounded-lg shadow-lg"
-        />
+        <img src="file/test.png" alt="Welcome" class="mt-10 w-full max-w-md mx-auto rounded-lg shadow-lg"/>
     </div>
 </section>
 

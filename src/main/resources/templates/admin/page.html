@@ -7,18 +7,14 @@
 <div class="container body">
     <div class="main_container">
 
-        <!-- top navigation -->
         <div th:replace="~{admin/fragments/header :: top-menu}"></div>
-        <!-- /top navigation -->
 
-        <!-- page content -->
         <div class="right_col" role="main">
 
             <div class="title_left">
                 <h3 th:text="${page.title}"></h3>
             </div>
 
-            <!-- show subpages -->
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
@@ -55,15 +51,14 @@
                             <div class="ln_solid"></div>
 
                             <div sec:authorize="hasRole('DEVELOPER')" class="col-md-6 col-sm-6 col-xs-12">
-                                <a class="btn btn-warning" th:href="@{/admin/addPage(parentPageId=${page.id})}">Add subpage</a>
+                                <a class="btn btn-warning" th:href="@{/admin/addPage(parentPageId=${page.id})}">Add
+                                    subpage</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- /show subpages -->
 
-            <!-- add new pagetext -->
             <div sec:authorize="hasRole('DEVELOPER')" class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
@@ -117,9 +112,7 @@
                     </div>
                 </div>
             </div>
-            <!-- /add new pagetext -->
 
-            <!-- add new pageimage -->
             <div sec:authorize="hasRole('DEVELOPER')" class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
@@ -141,7 +134,7 @@
 
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                        Unikátní identifikátor
+                                        Unique identifier
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -151,7 +144,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">
-                                        Vyberte soubor
+                                        Select image
                                         <span class="required">*</span>
                                     </label>
                                     <div class="col-md-3 col-sm-6 col-xs-12">
@@ -173,9 +166,7 @@
                     </div>
                 </div>
             </div>
-            <!-- /add new pageimage -->
 
-            <!-- edit pagetexts-->
             <div class="row" th:each="pageTextEdit, stat : ${page.pageTexts}">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
@@ -228,9 +219,7 @@
                     </div>
                 </div>
             </div>
-            <!-- /edit pagetexts-->
 
-            <!-- edit pageimages-->
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-xs-6" th:each="pageImage : ${page.pageImages}">
                     <div class="x_panel">
@@ -281,16 +270,12 @@
                     </div>
                 </div>
             </div>
-            <!-- /edit pageimages-->
 
         </div>
-        <!-- /page content -->
     </div>
 
 
-    <!-- footer content -->
     <footer th:replace="~{admin/fragments/footer :: footer}"></footer>
-    <!-- /footer content -->
 </div>
 
 <div th:replace="~{admin/fragments/footer :: footer-scripts}"></div>

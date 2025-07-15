@@ -4,10 +4,9 @@ spring:
     url: jdbc:h2:mem:mymemdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MODE=MySQL
     username: sa
     password: test
-    # initialization-mode je od Spring Boot 2.5 deprecated → použij níže
   sql:
     init:
-      mode: always          # nahrazuje initialization-mode
+      mode: always
       schema-locations: classpath:init.sql
       data-locations: classpath:data.sql
 

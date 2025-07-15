@@ -3,20 +3,16 @@
 <head th:replace="~{front/fragments/header :: head}">
 </head>
 
-
 <div th:replace="~{front/fragments/header :: main-menu}"></div>
 
 <body>
 <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col items-center text-center">
-        <p class="mt-20" th:utext="${pageTexts.get('about-text')}">
-        </p>
+        <p class="mt-20" th:utext="${pageTexts.get('about-text')}"></p>
 
-        <img
-                class="mt-8 w-full max-w-3xl rounded-lg shadow-lg"
-                th:src="@{/file/} + ${pageImages.get('about-image')}"
-                alt="About us"
-        />
+        <img class="mt-8 w-full max-w-3xl rounded-lg shadow-lg"
+             th:src="@{/file/} + ${pageImages.get('about-image')}"
+             alt="About us"/>
     </div>
 </section>
 

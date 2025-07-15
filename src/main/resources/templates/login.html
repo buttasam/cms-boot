@@ -4,13 +4,9 @@
 </head>
 
 <body class="min-h-screen flex items-center justify-center bg-gray-100">
-<!-- Wrapper with Alpine state -->
 <div x-data="{ form: 'login' }" class="w-full max-w-md bg-white p-8 rounded-lg shadow-lg">
 
-    <!-- ─── LOGIN ─────────────────────────────────────────────────────────── -->
-    <section
-            x-show="form === 'login'"
-    >
+    <section x-show="form === 'login'">
         <h1 class="text-2xl font-semibold text-center mb-6">Login</h1>
 
         <form th:action="@{/login}" method="post" class="space-y-4">
@@ -23,10 +19,10 @@
             </div>
 
             <input name="username" type="text" placeholder="Username" required
-                   class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-200" />
+                   class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-200"/>
 
             <input name="password" type="password" placeholder="Password" required
-                   class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-200" />
+                   class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-200"/>
 
             <button type="submit"
                     class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded">
@@ -41,23 +37,21 @@
         </form>
     </section>
 
-    <section
-            x-show="form === 'register'"
-    >
+    <section x-show="form === 'register'">
         <h1 class="text-2xl font-semibold text-center mb-6">Create new account</h1>
 
         <form th:action="@{/register}" method="post" class="space-y-4">
             <input name="username" type="text" placeholder="Username" required
-                   class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-200" />
+                   class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-200"/>
 
             <input name="email" type="email" placeholder="Email" required
-                   class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-200" />
+                   class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-200"/>
 
             <input name="password" type="password" placeholder="Password" required
-                   class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-200" />
+                   class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-200"/>
 
             <input name="password_confirm" type="password" placeholder="Password confirm" required
-                   class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-200" />
+                   class="w-full px-3 py-2 border rounded focus:outline-none focus:ring focus:ring-indigo-200"/>
 
             <button type="submit"
                     class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded">

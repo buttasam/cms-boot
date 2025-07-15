@@ -7,11 +7,8 @@
 <div class="container body">
     <div class="main_container">
 
-        <!-- top navigation -->
         <div th:replace="~{admin/fragments/header :: top-menu}"></div>
-        <!-- /top navigation -->
 
-        <!-- page content -->
         <div class="right_col" role="main" style="min-height: 914px;">
             <div class="">
                 <div class="page-title">
@@ -39,8 +36,11 @@
                                         <td th:text="${notification.message}">
                                         </td>
                                         <td>
-                                            <a th:if="${!notification.isRead()}" th:href="@{/admin/notification/read(notificationId=${notification.id})}" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> Přečíst </a>
-                                            <a th:href="@{/admin/notification/delete(notificationId=${notification.id})}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Odstanit </a>
+                                            <a th:if="${!notification.isRead()}"
+                                               th:href="@{/admin/notification/read(notificationId=${notification.id})}"
+                                               class="btn btn-info btn-xs"><i class="fa fa-eye"></i> Přečíst </a>
+                                            <a th:href="@{/admin/notification/delete(notificationId=${notification.id})}"
+                                               class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Odstanit </a>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -51,13 +51,10 @@
                 </div>
             </div>
         </div>
-        <!-- /page content -->
     </div>
 
 
-    <!-- footer content -->
     <footer th:replace="~{admin/fragments/footer :: footer}"></footer>
-    <!-- /footer content -->
 </div>
 
 <div th:replace="~{admin/fragments/footer :: footer-scripts}"></div>
